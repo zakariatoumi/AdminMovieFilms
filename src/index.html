@@ -6,8 +6,43 @@
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link href="https://use.fontawesome.com/releases/v5.0.2/css/all.css" rel="stylesheet">
+
+  <!-- Bootstrap core CSS -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="assets/css/simple-sidebar.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="assets/css/MainStyle.css">
+
+ 
+
+  <style>
+  body{
+    background-color: black;
+  }
+ 
+  </style>
 </head>
 <body>
   <app-root></app-root>
+
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="assets/vendor/jquery/jquery.min.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Menu Toggle Script -->
+  <script>
+    $(document).ready(function(){
+    $("#menu-toggle").click(function(e) {
+      e.preventDefault();
+      $("#wrapper").toggleClass("toggled");
+    });
+    });
+  </script>
+
+  
 </body>
 </html>
