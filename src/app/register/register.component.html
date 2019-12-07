@@ -7,20 +7,52 @@
         <!--<img id="profile-img" class="profile-img-card" src="img/avatar_2x.png" />-->
 
         <p class="profile-img-card font-weight-bold text-dark" style="font-size: 18px;">Inscription</p>
-        
-        
-        <form class="form-signin">
-            
-            <input type="text" id="inputNom" class="form-control" placeholder="Nom" required autofocus>
 
-            <input type="text" id="inputNom" class="form-control" placeholder="Prenom" required>
 
-            <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required>
+        <form class="form-signin" (ngSubmit)="onSubmit()" [formGroup]="addForm">
 
-            <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+            <input type="text" id="inputNom" class="form-control" name="nom" formControlName="nom" placeholder="Nom" required autofocus>
+
+            <div *ngIf="addForm.get('nom').hasError('required') && addForm.get('nom').touched" class="cross-validation-error-message alert alert-danger">
+              Entrer votre Nom
+            </div>
+
+            <div *ngIf="addForm.get('nom').hasError('maxlength') && addForm.get('nom').touched" class="cross-validation-error-message alert alert-danger">
+              Max 20
+            </div>
+
+            <input type="text" id="inputNom" class="form-control" name="prenom" formControlName="prenom" placeholder="Prenom" required>
+
+            <div *ngIf="addForm.get('prenom').hasError('required') && addForm.get('prenom').touched" class="cross-validation-error-message alert alert-danger">
+              Entrer votre Prenom
+            </div>
+
+            <div *ngIf="addForm.get('prenom').hasError('maxlength') && addForm.get('prenom').touched" class="cross-validation-error-message alert alert-danger">
+              Max 20
+            </div>
+
+            <input type="email" id="inputEmail" class="form-control" name="email" formControlName="email" placeholder="Email address" required>
+
+            <div *ngIf="addForm.get('email').hasError('required') && addForm.get('email').touched" class="cross-validation-error-message alert alert-danger">
+              Entrer votre Email
+            </div>
+
+            <div *ngIf="addForm.get('email').hasError('maxlength') && addForm.get('email').touched" class="cross-validation-error-message alert alert-danger">
+              Max 30
+            </div>
+
+            <input type="password" id="inputPassword" class="form-control" name="password" formControlName="password" placeholder="Password" required>
+
+            <div *ngIf="addForm.get('password').hasError('required') && addForm.get('password').touched" class="cross-validation-error-message alert alert-danger">
+              Entrer votre Password
+            </div>
+
+            <div *ngIf="addForm.get('password').hasError('maxlength') && addForm.get('password').touched" class="cross-validation-error-message alert alert-danger">
+              Max 20
+            </div>
 
             <input type="password" id="inputPassword" class="form-control" placeholder="Confirmer Password" required>
-            
+
             <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Inscrire</button>
         </form><!-- /form -->
         <a routerLink="/login" class="forgot-password">

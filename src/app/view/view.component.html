@@ -1,0 +1,36 @@
+
+            <div class="table-responsive-sm">
+            <table class="table table-bordered table-hover table-dark mt-5">
+                <thead>
+                  <tr>
+
+                    <th scope="col">Nom</th>
+                    <th scope="col">Prenom</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let utilisateur of users">
+
+                    <td>{{utilisateur.nom}}</td>
+                    <td>{{utilisateur.prenom}}</td>
+                    <td>{{utilisateur.email}}</td>
+                    <td>
+                        <button type="button" class="btn btn-outline-danger" (click)="delete(utilisateur)"><i class="fas fa-trash-alt"></i></button> |
+                        <button type="button" class="btn btn-outline-success"><i class="fas fa-pencil-alt"></i></button>
+                    </td>
+                  </tr>
+
+                </tbody>
+              </table>
+
+
+            </div>
+
+
+
+
+
+
+

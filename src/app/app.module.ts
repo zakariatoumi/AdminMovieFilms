@@ -9,7 +9,9 @@ import { AddFilmComponent } from './films/add-film/add-film.component';
 import { ListFilmsComponent } from './films/list-films/list-films.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
-//import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ViewComponent } from './view/view.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 const appRoutes: Routes = [
@@ -19,6 +21,7 @@ const appRoutes: Routes = [
   { path: 'listFilms', component: ListFilmsComponent },
   { path: 'login', component: LoginComponent },
   { path: 'Register', component: RegisterComponent },
+  { path: 'view', component: ViewComponent },
 
 
 ];
@@ -31,15 +34,19 @@ const appRoutes: Routes = [
     ListFilmsComponent,
     LoginComponent,
     RegisterComponent,
-    //FormsModule,
+    ViewComponent,
 
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(
       appRoutes,
-      { enableTracing: true }
-    )
+      { enableTracing: true },
+
+    ),
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
   ],
   providers: [{provide: APP_BASE_HREF, useValue: '/'}],
   bootstrap: [AppComponent]

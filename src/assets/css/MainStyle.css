@@ -1,0 +1,31 @@
+
+
+
+
+
+
+/*------------------charts-----------------------*/
+/*------------------Data table-----------------------*/
+
+/*----footer---------*/
+html{
+  height: 100%;
+}
+body{
+  min-height: 100%;
+  padding-bottom: 4rem;
+  position: relative;
+  background-color: black;
+}
+#footer{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+#copy{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
