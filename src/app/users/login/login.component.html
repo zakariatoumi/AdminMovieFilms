@@ -11,21 +11,13 @@
 
         <p id="profile-name" class="profile-name-card"></p>
 
-        <h3 *ngIf='message'>
-          {{ message }}
-        </h3>
-
-        <div *ngIf="invalidLogin" class="error">
-          <div class="text-danger">Invalied user or password. Please try again</div>
-        </div>
-
         <form class="form-signin" (ngSubmit)="onSubmit()" [formGroup]="loginForm">
             <span id="reauth-email" class="reauth-email"></span>
             <input type="email" id="inputEmail" class="form-control" formControlName="username" placeholder="Email address" required autofocus autocomplete="off">
-            <div class="error" *ngIf="loginForm.controls['username'].hasError('required') && loginForm.controls['username'].touched">Please enter user name</div>
+            <div class="error" *ngIf="loginForm.controls['username'].hasError('required') && loginForm.controls['username'].touched" class="alert alert-danger">Please enter user name</div>
 
             <input type="password" formControlName="password" id="inputPassword" class="form-control" placeholder="Password" required autocomplete="off">
-            <div class="error" *ngIf="loginForm.controls['password'].hasError('required') && loginForm.controls['password'].touched">Please enter password</div>
+            <div class="error" *ngIf="loginForm.controls['password'].hasError('required') && loginForm.controls['password'].touched" class="alert alert-danger">Please enter password</div>
 
             <div id="remember" class="checkbox">
                 <label class="text-dark">

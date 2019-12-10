@@ -7,12 +7,12 @@ import { RouterModule, Routes } from '@angular/router';
 import { APP_BASE_HREF } from '@angular/common';
 import { AddFilmComponent } from './films/add-film/add-film.component';
 import { ListFilmsComponent } from './films/list-films/list-films.component';
-import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
+import { LoginComponent } from './users/login/login.component';
+import { RegisterComponent } from './users/register/register.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ViewComponent } from './view/view.component';
+import { ViewComponent } from './users/view/view.component';
 import { HttpClientModule } from '@angular/common/http';
-import { EditUserComponent } from './edit-user/edit-user.component';
+import { EditUserComponent } from './users/edit-user/edit-user.component';
 
 
 const appRoutes: Routes = [

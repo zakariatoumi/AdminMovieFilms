@@ -4,7 +4,6 @@ import { User } from './Model/user';
 import { environment as env } from 'src/environments/environment';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
-import { ApiResponse } from './Model/api-response';
 
 @Injectable({
   providedIn: 'root'
@@ -13,9 +12,7 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
-  login(loginData): Observable<ApiResponse> {
-    return this.http.post<ApiResponse>(env.BASE_API_URL + 'MovieFilm/Users/login.php', loginData);
-}
+
 
   getUsers() {
     return this.http.get<User[]>('http://localhost:4432/MovieFilm/Users/list.php');
