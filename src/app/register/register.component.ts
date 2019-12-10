@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
+  token: string;
 
   constructor(private formBuilder: FormBuilder,
               private userService: UserService,
@@ -19,6 +20,7 @@ export class RegisterComponent implements OnInit {
   addForm: FormGroup;
 
   ngOnInit() {
+
     this.addForm = this.formBuilder.group({
       id: [],
       nom: ['', [Validators.required, Validators.maxLength(20)]],
@@ -32,9 +34,11 @@ export class RegisterComponent implements OnInit {
   onSubmit() {
 
     this.userService.createUsers(this.addForm.value)
-    .subscribe(data => {
-      this.router.navigate(['view']);
-    });
+    .subscribe(
+      data => {
+        this.router.navigate(['view']);
+      }
+    );
 
 
   }

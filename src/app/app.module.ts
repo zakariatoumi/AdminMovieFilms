@@ -12,6 +12,7 @@ import { RegisterComponent } from './register/register.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ViewComponent } from './view/view.component';
 import { HttpClientModule } from '@angular/common/http';
+import { EditUserComponent } from './edit-user/edit-user.component';
 
 
 const appRoutes: Routes = [
@@ -22,6 +23,7 @@ const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'Register', component: RegisterComponent },
   { path: 'view', component: ViewComponent },
+  { path: 'edit/:id', component: EditUserComponent },
 
 
 ];
@@ -35,6 +37,7 @@ const appRoutes: Routes = [
     LoginComponent,
     RegisterComponent,
     ViewComponent,
+    EditUserComponent,
 
   ],
   imports: [

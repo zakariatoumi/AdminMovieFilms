@@ -1,6 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { User } from './user';
+import { User } from './Model/user';
+import { environment as env } from 'src/environments/environment';
+import { map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { ApiResponse } from './Model/api-response';
 
 @Injectable({
   providedIn: 'root'
@@ -8,6 +12,10 @@ import { User } from './user';
 export class UserService {
 
   constructor(private http: HttpClient) { }
+
+  login(loginData): Observable<ApiResponse> {
+    return this.http.post<ApiResponse>(env.BASE_API_URL + 'MovieFilm/Users/login.php', loginData);
+}
 
   getUsers() {
     return this.http.get<User[]>('http://localhost:4432/MovieFilm/Users/list.php');
@@ -19,8 +27,16 @@ export class UserService {
   }
 
   createUsers(user: User) {
-    return this.http.post<User[]>('http://localhost:4432/MovieFilm/Users/insert.php', user);
+    return this.http.post<User[]>(env.BASE_API_URL + env.APIs.createUser , user);
 
+  }
+
+  updateUsers(user: User) {
+    return this.http.post<User[]>(env.BASE_API_URL + env.APIs.updateUser, user);
+  }
+
+  getUsersByID(id: any) {
+    return this.http.get<User[]>(env.BASE_API_URL + 'MovieFilm/Users/getById.php?id=' + id).pipe(map(res => res || []));
   }
 
 }
