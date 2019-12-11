@@ -10,14 +10,17 @@ import Swal from 'sweetalert2';
 })
 export class ViewComponent implements OnInit {
   users: User[];
+  messageErr: string;
 
   constructor(private userService: UserService) { }
 
   ngOnInit() {
     this.userService.getUsers()
     .subscribe( (data: User[]) => {
+
         this.users = data;
         console.log(this.users);
+
     },
     err => {
       console.log(err);

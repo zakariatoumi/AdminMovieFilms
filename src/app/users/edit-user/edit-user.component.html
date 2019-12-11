@@ -6,7 +6,7 @@
         <!-- <img class="profile-img-card" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" alt="" /> -->
         <!--<img id="profile-img" class="profile-img-card" src="img/avatar_2x.png" />-->
 
-        <p class="profile-img-card font-weight-bold text-dark" style="font-size: 18px;">Inscription</p>
+        <p class="profile-img-card font-weight-bold text-dark" style="font-size: 18px;">Modification</p>
 
 
         <form class="form-signin" [formGroup]="addForm">
@@ -41,7 +41,7 @@
               Max 30
             </div>
 
-            <input type="password" id="inputPassword" class="form-control" name="password" formControlName="password" placeholder="Password" required>
+            <input type="text" id="inputPassword" class="form-control" name="password" formControlName="password" placeholder="Password" required>
 
             <div *ngIf="IsFiled && f.password.errors" class="cross-validation-error-message alert alert-danger">
               Entrer votre Password
@@ -51,13 +51,9 @@
               Max 20
             </div>
 
-            <input type="password" id="inputPassword" class="form-control" placeholder="Confirmer Password" required>
-
-            <button class="btn btn-lg btn-primary btn-block btn-signin" (click)="onSubmit()">Inscrire</button>
+            <button class="btn btn-lg btn-primary btn-block btn-signin" (click)="onSubmit()">Modifier</button>
         </form><!-- /form -->
-        <a routerLink="/login" class="forgot-password">
-            Login
-        </a>
+
     </div><!-- /card-container -->
 </div><!-- /container -->
 <br>

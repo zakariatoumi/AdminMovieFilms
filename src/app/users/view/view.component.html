@@ -1,5 +1,5 @@
 
-            <div class="table-responsive-sm">
+            <div class="table-responsive-sm" *ngIf="users.length > 0">
             <table class="table table-bordered table-hover table-dark mt-5">
                 <thead>
                   <tr>
@@ -25,10 +25,11 @@
                 </tbody>
               </table>
 
-
             </div>
 
-
+            <div class="alert alert-primary mt-5 text-center font-weight-bold" role="alert" *ngIf="!(users.length > 0)">
+              data vide
+            </div>
 
 
 
