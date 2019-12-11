@@ -1,83 +1,84 @@
 <!--/col-->
-<div class="col-md-8 offset-md-2 text-black-50">
+<div class="col-md-8 offset-md-2 text-black-50 mb-5">
         <span class="anchor" id="formUserEdit"></span>
         <hr class="">
 
         <!-- form user info -->
         <div class="card card-outline-secondary">
             <div class="card-header">
-                <h3 class="mb-0">User Information</h3>
+                <h3 class="mb-0">Ajouter Film</h3>
             </div>
             <div class="card-body">
-                <form class="form" role="form" autocomplete="off">
+                <form class="form" role="form" autocomplete="off" [formGroup]="addForm">
                     <div class="form-group row">
-                        <label class="col-lg-3 col-form-label form-control-label">First name</label>
+                        <label class="col-lg-3 col-form-label form-control-label">Titre Film</label>
                         <div class="col-lg-9">
-                            <input class="form-control" type="text" value="Jane">
+                            <input class="form-control" type="text" name="titreFilm" formControlName="titreFilm" placeholder="Titre Film">
+                            <div *ngIf="addForm.controls['titreFilm'].hasError('required') && addForm.get('titreFilm').touched" class="alert alert-danger">
+                                S'il vous plaît entrer titre de film
+                            </div>
+                            <div *ngIf="addForm.controls['titreFilm'].hasError('maxlength')" class="alert alert-danger">
+                                please enter at least 20 characters
+                            </div>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-lg-3 col-form-label form-control-label">Last name</label>
+                        <label class="col-lg-3 col-form-label form-control-label">Pseudo Film</label>
                         <div class="col-lg-9">
-                            <input class="form-control" type="text" value="Bishop">
+                            <input class="form-control" type="text" name="pseudoFilm" formControlName="pseudoFilm" placeholder="Pseudo Film">
+                            <div *ngIf="addForm.controls['pseudoFilm'].hasError('required') && addForm.get('pseudoFilm').touched" class="alert alert-danger">
+                                S'il vous plaît entrer pseudo de film
+                            </div>
+                            <div *ngIf="addForm.controls['pseudoFilm'].hasError('maxlength')" class="alert alert-danger">
+                                please enter at least 20 characters
+                            </div>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-lg-3 col-form-label form-control-label">Email</label>
+                        <label class="col-lg-3 col-form-label form-control-label">Lien Film</label>
                         <div class="col-lg-9">
-                            <input class="form-control" type="email" value="email@gmail.com">
+                            <input class="form-control" type="text" name="lienFilm" formControlName="lienFilm" placeholder="Lien Film">
+                            <div *ngIf="addForm.controls['lienFilm'].hasError('required') && addForm.get('lienFilm').touched" class="alert alert-danger">
+                                S'il vous plaît entrer lien de film
+                            </div>
+                            <div *ngIf="addForm.controls['lienFilm'].hasError('maxlength')" class="alert alert-danger">
+                                please enter at least 5 characters
+                            </div>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-lg-3 col-form-label form-control-label">Company</label>
+                        <label class="col-lg-3 col-form-label form-control-label">Description Film</label>
                         <div class="col-lg-9">
-                            <input class="form-control" type="text" value="">
+                            <input class="form-control" type="text" name="descriptionFilm" formControlName="descriptionFilm" placeholder="Description Film">
+                            <div *ngIf="addForm.controls['descriptionFilm'].hasError('required') && addForm.get('descriptionFilm').touched" class="alert alert-danger">
+                                S'il vous plaît entrer description de film
+                            </div>
+                            <div *ngIf="addForm.controls['descriptionFilm'].hasError('maxlength')" class="alert alert-danger">
+                                please enter at least 500 characters
+                            </div>
                         </div>
                     </div>
+
                     <div class="form-group row">
-                        <label class="col-lg-3 col-form-label form-control-label">Website</label>
+                        <label class="col-lg-3 col-form-label form-control-label">Categorie Film</label>
                         <div class="col-lg-9">
-                            <input class="form-control" type="url" value="">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label class="col-lg-3 col-form-label form-control-label">Time Zone</label>
-                        <div class="col-lg-9">
-                            <select id="user_time_zone" class="form-control" size="0">
-                                <option value="Hawaii">(GMT-10:00) Hawaii</option>
-                                <option value="Alaska">(GMT-09:00) Alaska</option>
-                                <option value="Pacific Time (US &amp; Canada)">(GMT-08:00) Pacific Time (US &amp; Canada)</option>
-                                <option value="Arizona">(GMT-07:00) Arizona</option>
-                                <option value="Mountain Time (US &amp; Canada)">(GMT-07:00) Mountain Time (US &amp; Canada)</option>
-                                <option value="Central Time (US &amp; Canada)" selected="selected">(GMT-06:00) Central Time (US &amp; Canada)</option>
-                                <option value="Eastern Time (US &amp; Canada)">(GMT-05:00) Eastern Time (US &amp; Canada)</option>
-                                <option value="Indiana (East)">(GMT-05:00) Indiana (East)</option>
+                            <select id="user_time_zone" class="form-control" size="0" name="categorie" formControlName="categorie">
+                                <option value="" selected="select">Choisir Categorie...</option>
+                                <option *ngFor="let cat of categorie" value="{{cat.id}}" class="font-weight-bold">{{ cat.libelle }}</option>
                             </select>
+                            <div *ngIf="addForm.controls['categorie'].hasError('required') && addForm.get('categorie').touched" class="alert alert-danger">
+                                S'il vous plaît choisir categorie de film
+                            </div>
+
                         </div>
                     </div>
-                    <div class="form-group row">
-                        <label class="col-lg-3 col-form-label form-control-label">Username</label>
-                        <div class="col-lg-9">
-                            <input class="form-control" type="text" value="janeuser">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label class="col-lg-3 col-form-label form-control-label">Password</label>
-                        <div class="col-lg-9">
-                            <input class="form-control" type="password" value="11111122333">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label class="col-lg-3 col-form-label form-control-label">Confirm</label>
-                        <div class="col-lg-9">
-                            <input class="form-control" type="password" value="11111122333">
-                        </div>
-                    </div>
+
+
                     <div class="form-group row">
                         <label class="col-lg-3 col-form-label form-control-label"></label>
                         <div class="col-lg-9">
-                            <input type="reset" class="btn btn-secondary" value="Cancel">
-                            <input type="button" class="btn btn-primary" value="Save Changes">
+                            <input type="reset" class="btn btn-secondary" value="Vider">
+                            <input type="button" class="btn btn-danger" value="Ajouter Film" (click)="onSubmit()">
                         </div>
                     </div>
                 </form>

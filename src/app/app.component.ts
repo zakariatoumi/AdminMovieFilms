@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { UserService } from './user.service';
 
 @Component({
   selector: 'app-root',
@@ -12,10 +10,8 @@ export class AppComponent implements OnInit {
   title = 'AdminMovieFilms';
   token: string;
 
-  constructor(private formBuilder: FormBuilder,
-              private userService: UserService,
-              private router: Router
-) { }
+  constructor(private router: Router
+              ) { }
 
 
   ngOnInit() {

@@ -10,8 +10,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class EditUserComponent implements OnInit {
   addForm: FormGroup;
-  IsFiled: boolean = false;
+  IsFiled = false;
   id: string;
+  token: string;
   constructor(
     private formBuilder: FormBuilder,
     private userService: UserService,
@@ -32,7 +33,13 @@ export class EditUserComponent implements OnInit {
     // tslint:disable-next-line: radix
     this.id = this.route.snapshot.params.id;
     this.getUsersByID(this.id);
+
+    this.token =  window.localStorage.getItem('token');
+    console.log(this.token);
+    if (!this.token) {
+    this.router.navigate(['login']);
   }
+}
 
   getUsersByID(id) {
     this.userService.getUsersByID(id).subscribe(
