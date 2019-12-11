@@ -20,7 +20,11 @@ export class RegisterComponent implements OnInit {
   addForm: FormGroup;
 
   ngOnInit() {
-
+    this.token =  window.localStorage.getItem('token');
+    console.log(this.token);
+    if (!this.token) {
+      this.router.navigate(['login']);
+    }
     this.addForm = this.formBuilder.group({
       id: [],
       nom: ['', [Validators.required, Validators.maxLength(20)]],
