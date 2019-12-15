@@ -17,8 +17,8 @@
                     <td>{{utilisateur.prenom}}</td>
                     <td>{{utilisateur.email}}</td>
                     <td>
-                        <button type="button" class="btn btn-outline-danger" (click)="delete(utilisateur)"><i class="fas fa-trash-alt"></i></button>
-                        <button type="button" class="btn btn-outline-success ml-3" [routerLink]="['/edit', utilisateur.id]"><i class="fas fa-pencil-alt"></i></button>
+                        <button type="button" class="btn btn-outline-danger" style="width: 50px;" (click)="delete(utilisateur)"><i class="fas fa-trash-alt"></i></button>
+                        <button type="button" class="btn btn-outline-success ml-3" style="width: 50px;" [routerLink]="['/edit', utilisateur.id]"><i class="fas fa-pencil-alt"></i></button>
                     </td>
                   </tr>
 

@@ -13,6 +13,7 @@ import { Router } from '@angular/router';
 export class AddFilmComponent implements OnInit {
   categorie: Categorie[];
   addForm: FormGroup;
+  token: string;
 
   constructor(private formBuilder: FormBuilder,
               private filmService: FilmService,
@@ -40,6 +41,12 @@ export class AddFilmComponent implements OnInit {
       categorie: ['', [Validators.required]],
 
     });
+
+    this.token =  window.localStorage.getItem('token');
+    console.log(this.token);
+    if (!this.token) {
+    this.router.navigate(['login']);
+  }
   }
 
   onSubmit() {

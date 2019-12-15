@@ -32,4 +32,12 @@ export class FilmService {
     return this.http.delete<Film[]>('http://localhost:4432/MovieFilm/Films/delete.php?id=' + id);
 
   }
+
+  getFilmsByID(id: any) {
+    return this.http.get<Film[]>(env.BASE_API_URL + 'MovieFilm/Films/getById.php?id=' + id).pipe(map(res => res || []));
+  }
+
+  updateFilms(film: Film) {
+    return this.http.post<Film[]>(env.BASE_API_URL + 'MovieFilm/Films/update.php', film);
+  }
 }

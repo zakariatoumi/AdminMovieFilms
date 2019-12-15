@@ -3,6 +3,7 @@ import { Film } from '../../Model/film';
 import { FilmService } from '../../films/film.service';
 import { DomSanitizer } from '@angular/platform-browser';
 import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-list-films',
@@ -11,9 +12,11 @@ import Swal from 'sweetalert2';
 })
 export class ListFilmsComponent implements OnInit {
   film: Film[];
+  token: string;
 
   constructor(private filmService: FilmService,
-              sanitizer: DomSanitizer, ) { }
+              sanitizer: DomSanitizer,
+              private router: Router ) { }
 
   ngOnInit() {
     this.filmService.getFilms()
@@ -27,6 +30,12 @@ export class ListFilmsComponent implements OnInit {
       console.log(err);
       }
     );
+
+    this.token =  window.localStorage.getItem('token');
+    console.log(this.token);
+    if (!this.token) {
+    this.router.navigate(['login']);
+  }
   }
 
   delete(films: Film): void {

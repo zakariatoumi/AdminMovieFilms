@@ -15,6 +15,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { EditUserComponent } from './users/edit-user/edit-user.component';
 import { DetailsFilmsComponent } from './films/details-films/details-films.component';
 import { SafePipePipe } from './safe-pipe.pipe';
+import { EditFilmComponent } from './films/edit-film/edit-film.component';
 
 
 const appRoutes: Routes = [
@@ -27,6 +28,7 @@ const appRoutes: Routes = [
   { path: 'view', component: ViewComponent },
   { path: 'edit/:id', component: EditUserComponent },
   { path: 'details/:id', component: DetailsFilmsComponent },
+  { path: 'EditFilm/:id', component: EditFilmComponent },
 
 
 ];
@@ -43,6 +45,7 @@ const appRoutes: Routes = [
     EditUserComponent,
     DetailsFilmsComponent,
     SafePipePipe,
+    EditFilmComponent,
 
   ],
   imports: [
