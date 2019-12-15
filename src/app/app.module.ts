@@ -14,6 +14,7 @@ import { ViewComponent } from './users/view/view.component';
 import { HttpClientModule } from '@angular/common/http';
 import { EditUserComponent } from './users/edit-user/edit-user.component';
 import { DetailsFilmsComponent } from './films/details-films/details-films.component';
+import { SafePipePipe } from './safe-pipe.pipe';
 
 
 const appRoutes: Routes = [
@@ -41,6 +42,7 @@ const appRoutes: Routes = [
     ViewComponent,
     EditUserComponent,
     DetailsFilmsComponent,
+    SafePipePipe,
 
   ],
   imports: [

@@ -27,4 +27,9 @@ export class FilmService {
   DetailsFilmByID(id: any) {
     return this.http.get<Film[]>(env.BASE_API_URL + 'MovieFilm/Films/detailsById.php?id=' + id).pipe(map(res => res || []));
   }
+
+  deleteFilms(id: number) {
+    return this.http.delete<Film[]>('http://localhost:4432/MovieFilm/Films/delete.php?id=' + id);
+
+  }
 }
