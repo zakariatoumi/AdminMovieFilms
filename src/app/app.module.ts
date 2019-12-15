@@ -13,6 +13,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ViewComponent } from './users/view/view.component';
 import { HttpClientModule } from '@angular/common/http';
 import { EditUserComponent } from './users/edit-user/edit-user.component';
+import { DetailsFilmsComponent } from './films/details-films/details-films.component';
 
 
 const appRoutes: Routes = [
@@ -24,6 +25,7 @@ const appRoutes: Routes = [
   { path: 'Register', component: RegisterComponent },
   { path: 'view', component: ViewComponent },
   { path: 'edit/:id', component: EditUserComponent },
+  { path: 'details/:id', component: DetailsFilmsComponent },
 
 
 ];
@@ -38,6 +40,7 @@ const appRoutes: Routes = [
     RegisterComponent,
     ViewComponent,
     EditUserComponent,
+    DetailsFilmsComponent,
 
   ],
   imports: [

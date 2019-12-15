@@ -3,6 +3,7 @@ import { environment as env } from 'src/environments/environment';
 import { Film } from '../Model/film';
 import { Categorie } from '../Model/categorie';
 import { HttpClient } from '@angular/common/http';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -21,5 +22,9 @@ export class FilmService {
 
   addFilms(film: Film) {
     return this.http.post<Film[]>(env.BASE_API_URL + 'MovieFilm/Films/insert_film.php', film);
+  }
+
+  DetailsFilmByID(id: any) {
+    return this.http.get<Film[]>(env.BASE_API_URL + 'MovieFilm/Films/detailsById.php?id=' + id).pipe(map(res => res || []));
   }
 }
