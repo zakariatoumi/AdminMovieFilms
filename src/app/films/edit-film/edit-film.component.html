@@ -66,6 +66,21 @@
 
 
               <div class="form-group row">
+                <label class="col-lg-3 col-form-label form-control-label">Categorie Film</label>
+                <div class="col-lg-9">
+                    <select id="user_time_zone" class="form-control" size="0" name="id_categorie" formControlName="id_categorie">
+                        <option value="" selected="select">Choisir Categorie...</option>
+                        <option *ngFor="let cat of categorie" value="{{cat.id}}" class="font-weight-bold">{{ cat.libelle }}</option>
+                    </select>
+                    <div *ngIf="addForm.controls['id_categorie'].hasError('required') && addForm.get('id_categorie').touched" class="alert alert-danger">
+                        S'il vous plaît choisir categorie de film
+                    </div>
+
+                </div>
+            </div>
+
+
+              <div class="form-group row">
                   <label class="col-lg-3 col-form-label form-control-label"></label>
                   <div class="col-lg-9">
                       <!-- <input type="reset" class="btn btn-secondary" value="Cancel"> -->
