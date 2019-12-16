@@ -14,6 +14,7 @@ export class AddFilmComponent implements OnInit {
   categorie: Categorie[];
   addForm: FormGroup;
   token: string;
+  IsFiled = false;
 
   constructor(private formBuilder: FormBuilder,
               private filmService: FilmService,
@@ -49,9 +50,14 @@ export class AddFilmComponent implements OnInit {
   }
   }
 
+  get f() {
+    return this.addForm.controls;
+  }
+
   onSubmit() {
 
-
+    this.IsFiled = true;
+    if (this.addForm.valid) {
     // console.log(this.addForm.value);
     this.filmService.addFilms(this.addForm.value)
     .subscribe(
@@ -59,6 +65,7 @@ export class AddFilmComponent implements OnInit {
         this.router.navigate(['listFilms']);
       }
     );
+    }
 
 
   }

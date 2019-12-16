@@ -15,7 +15,9 @@
                     <label class="col-lg-3 col-form-label form-control-label">Nom</label>
                     <div class="col-lg-9">
                         <input type="text" id="inputNom" class="form-control" name="nom" formControlName="nom" placeholder="Nom" required autofocus>
-                        <label class="label-input" *ngIf="IsFiled && f.nom.errors" class="cross-validation-error-message alert alert-danger">* ( Entrer votre Nom )</label>
+                        <div *ngIf="IsFiled && f.nom.errors" class="cross-validation-error-message alert alert-danger">
+                          Entrer votre Nom
+                        </div>
                         <div *ngIf="f.nom.hasError('maxlength')" class="cross-validation-error-message alert alert-danger">
                             Max 20
                           </div>
@@ -68,7 +70,7 @@
                 <div class="form-group row">
                     <label class="col-lg-3 col-form-label form-control-label"></label>
                     <div class="col-lg-9">
-                        <!-- <input type="reset" class="btn btn-secondary" value="Cancel"> -->
+                        <input type="reset" class="btn btn-secondary font-weight-bold" value="Vider">
                         <input type="button" class="btn btn-danger font-weight-bold" value="Modifier" (click)="onSubmit()">
                     </div>
                 </div>

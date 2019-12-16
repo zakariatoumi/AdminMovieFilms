@@ -14,48 +14,48 @@
                         <label class="col-lg-3 col-form-label form-control-label">Titre Film</label>
                         <div class="col-lg-9">
                             <input class="form-control" type="text" name="titreFilm" formControlName="titreFilm" placeholder="Titre Film">
-                            <div *ngIf="addForm.controls['titreFilm'].hasError('required') && addForm.get('titreFilm').touched" class="alert alert-danger">
-                                S'il vous plaît entrer titre de film
+                            <div *ngIf="IsFiled && f.titreFilm.errors" class="cross-validation-error-message alert alert-danger">
+                              Entrer votre Titre Film
                             </div>
-                            <div *ngIf="addForm.controls['titreFilm'].hasError('maxlength')" class="alert alert-danger">
-                                please enter at least 20 characters
-                            </div>
+                            <div *ngIf="f.titreFilm.hasError('maxlength')" class="cross-validation-error-message alert alert-danger">
+                                Max 20
+                              </div>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-lg-3 col-form-label form-control-label">Pseudo Film</label>
                         <div class="col-lg-9">
                             <input class="form-control" type="text" name="pseudoFilm" formControlName="pseudoFilm" placeholder="Pseudo Film">
-                            <div *ngIf="addForm.controls['pseudoFilm'].hasError('required') && addForm.get('pseudoFilm').touched" class="alert alert-danger">
-                                S'il vous plaît entrer pseudo de film
+                            <div *ngIf="IsFiled && f.pseudoFilm.errors" class="cross-validation-error-message alert alert-danger">
+                              Entrer votre Pseudo Film
                             </div>
-                            <div *ngIf="addForm.controls['pseudoFilm'].hasError('maxlength')" class="alert alert-danger">
-                                please enter at least 20 characters
-                            </div>
+                            <div *ngIf="f.pseudoFilm.hasError('maxlength')" class="cross-validation-error-message alert alert-danger">
+                                Max 20
+                              </div>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-lg-3 col-form-label form-control-label">Lien Film</label>
                         <div class="col-lg-9">
                             <input class="form-control" type="text" name="lienFilm" formControlName="lienFilm" placeholder="Lien Film">
-                            <div *ngIf="addForm.controls['lienFilm'].hasError('required') && addForm.get('lienFilm').touched" class="alert alert-danger">
-                                S'il vous plaît entrer lien de film
+                            <div *ngIf="IsFiled && f.lienFilm.errors" class="cross-validation-error-message alert alert-danger">
+                              Entrer votre Lien Film
                             </div>
-                            <div *ngIf="addForm.controls['lienFilm'].hasError('maxlength')" class="alert alert-danger">
-                                please enter at least 5 characters
-                            </div>
+                            <div *ngIf="f.lienFilm.hasError('maxlength')" class="cross-validation-error-message alert alert-danger">
+                                Max 20
+                              </div>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-lg-3 col-form-label form-control-label">Description Film</label>
                         <div class="col-lg-9">
                             <textarea class="form-control" type="text" name="descriptionFilm" formControlName="descriptionFilm" placeholder="Description Film"></textarea>
-                            <div *ngIf="addForm.controls['descriptionFilm'].hasError('required') && addForm.get('descriptionFilm').touched" class="alert alert-danger">
-                                S'il vous plaît entrer description de film
+                            <div *ngIf="IsFiled && f.descriptionFilm.errors" class="cross-validation-error-message alert alert-danger">
+                              Entrer votre Description Film
                             </div>
-                            <div *ngIf="addForm.controls['descriptionFilm'].hasError('maxlength')" class="alert alert-danger">
-                                please enter at least 500 characters
-                            </div>
+                            <div *ngIf="f.descriptionFilm.hasError('maxlength')" class="cross-validation-error-message alert alert-danger">
+                                Max 20
+                              </div>
                         </div>
                     </div>
 
@@ -66,9 +66,10 @@
                                 <option value="" selected="select">Choisir Categorie...</option>
                                 <option *ngFor="let cat of categorie" value="{{cat.id}}" class="font-weight-bold">{{ cat.libelle }}</option>
                             </select>
-                            <div *ngIf="addForm.controls['categorie'].hasError('required') && addForm.get('categorie').touched" class="alert alert-danger">
-                                S'il vous plaît choisir categorie de film
+                            <div *ngIf="IsFiled && f.categorie.errors" class="cross-validation-error-message alert alert-danger">
+                              S'il vous plit choisir une Categorie de Film
                             </div>
+
 
                         </div>
                     </div>

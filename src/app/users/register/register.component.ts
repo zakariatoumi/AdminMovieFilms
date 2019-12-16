@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 })
 export class RegisterComponent implements OnInit {
   token: string;
+  IsFiled = false;
 
   constructor(private formBuilder: FormBuilder,
               private userService: UserService,
@@ -35,14 +36,20 @@ export class RegisterComponent implements OnInit {
     });
   }
 
-  onSubmit() {
+  get f() {
+    return this.addForm.controls;
+  }
 
+  onSubmit() {
+    this.IsFiled = true;
+    if (this.addForm.valid) {
     this.userService.createUsers(this.addForm.value)
     .subscribe(
       data => {
         this.router.navigate(['view']);
       }
     );
+    }
 
 
   }
