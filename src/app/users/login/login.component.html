@@ -5,14 +5,14 @@
 <!--********************************contenu de page Login********************************-->
 <br>
 <div class="container">
-    <div class="card card-container">
+    <div class="card bg-dark card-container">
         <!-- <img class="profile-img-card" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" alt="" /> -->
         <img id="profile-img" class="profile-img-card" src="assets/img/avatar_2x.png" />
 
         <p id="profile-name" class="profile-name-card"></p>
-        <h3 *ngIf='message'>
+        <!-- <h3 *ngIf='message'>
           {{message}}
-         </h3>
+         </h3> -->
          <div *ngIf="invalidLogin" class="error">
           <div class="text-danger">Invalied user or password. Please try again</div>
         </div>

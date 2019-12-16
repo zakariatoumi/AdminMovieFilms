@@ -66,7 +66,7 @@ export class EditFilmComponent implements OnInit {
         this.addForm.controls['pseudo'].setValue(res['pseudo']);
         this.addForm.controls['lien_film'].setValue(res['lien_film']);
         this.addForm.controls['description'].setValue(res['description']);
-        this.addForm.controls['id_categorie'].setValue(res['id_categorie']);
+        this.addForm.controls['id_categorie'].setValue(res['Id_categorie']);
     });
   }
 
