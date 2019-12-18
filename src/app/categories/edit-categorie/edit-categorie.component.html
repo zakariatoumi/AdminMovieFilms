@@ -1,0 +1,38 @@
+<!--/col-->
+<div class="col-md-8 offset-md-2 text-black-50 mb-5">
+        <span class="anchor" id="formUserEdit"></span>
+        <hr class="">
+
+        <!-- form Update Categorie info -->
+        <div class="card bg-dark text-light card-outline-secondary">
+            <div class="card-header" style="background-color: rgb(102, 102, 102);">
+                <h3 class="mb-0">Modification Categorie</h3>
+            </div>
+            <div class="card-body">
+                <form class="form" role="form" autocomplete="off" [formGroup]="addForm">
+                    <div class="form-group row">
+                        <label class="col-lg-3 col-form-label form-control-label">Categorie</label>
+                        <div class="col-lg-9">
+                            <input class="form-control" type="text" name="libelle" formControlName="libelle" placeholder="Categorie">
+                            <div *ngIf="IsFiled && f.libelle.errors" class="cross-validation-error-message alert alert-danger">
+                              Entrer votre Categorie
+                            </div>
+                            <div *ngIf="f.libelle.hasError('maxlength')" class="cross-validation-error-message alert alert-danger">
+                                Max 20
+                              </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-lg-3 col-form-label form-control-label"></label>
+                        <div class="col-lg-9">
+                            <input type="reset" class="btn btn-secondary font-weight-bold" value="Vider">
+                            <input type="button" class="btn btn-danger font-weight-bold" value="Modifier" (click)="onSubmit()">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- /form Update Categorie info -->
+
+

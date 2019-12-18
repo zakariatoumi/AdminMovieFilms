@@ -1,0 +1,39 @@
+
+            <div class="table-responsive-sm">
+                <table class="table table-bordered table-hover table-dark mt-5" *ngIf="commantaires.length > 0">
+                    <thead>
+                      <tr>
+
+
+                        <th scope="col">Texte Commantaire</th>
+                        <th scope="col">Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let commantaire of commantaires">
+
+                        <td style="width: 80%;">{{commantaire.text_commantaire}} </td>
+
+                        <td>
+                            <button type="button" class="btn btn-outline-danger " style="width: 50px;" (click)="delete(commantaire)"><i class="fas fa-trash-alt"></i></button>
+                            <!-- <button type="button" class="btn btn-outline-success ml-2" style="width: 50px;" [routerLink]="['/editCommantaire']" routerLinkActive="router-link-active" ><i class="fas fa-pencil-alt"></i></button> -->
+                            <button type="button" class="btn btn-outline-primary ml-2" style="width: 50px;" [routerLink]="['/detailCommantaire', commantaire.id]" routerLinkActive="router-link-active" ><i class="fas fa-info"></i></button>
+
+
+
+                        </td>
+                      </tr>
+
+                    </tbody>
+                  </table>
+
+                </div>
+
+                <div class="alert alert-primary mt-5 text-center font-weight-bold" role="alert" *ngIf="!(commantaires.length > 0)">
+                  data vide
+                </div>
+
+
+
+
+

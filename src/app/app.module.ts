@@ -16,6 +16,11 @@ import { EditUserComponent } from './users/edit-user/edit-user.component';
 import { DetailsFilmsComponent } from './films/details-films/details-films.component';
 import { SafePipePipe } from './safe-pipe.pipe';
 import { EditFilmComponent } from './films/edit-film/edit-film.component';
+import { ListCategorieComponent } from './categories/list-categorie/list-categorie.component';
+import { AddCategorieComponent } from './categories/add-categorie/add-categorie.component';
+import { EditCategorieComponent } from './categories/edit-categorie/edit-categorie.component';
+import { ListCommantaireComponent } from './commantaires/list-commantaire/list-commantaire.component';
+import { DetailCommantaireComponent } from './commantaires/detail-commantaire/detail-commantaire.component';
 
 
 const appRoutes: Routes = [
@@ -29,6 +34,11 @@ const appRoutes: Routes = [
   { path: 'edit/:id', component: EditUserComponent },
   { path: 'details/:id', component: DetailsFilmsComponent },
   { path: 'EditFilm/:id', component: EditFilmComponent },
+  { path: 'listCategorie', component: ListCategorieComponent },
+  { path: 'addCategorie', component: AddCategorieComponent },
+  { path: 'editCategorie/:id', component: EditCategorieComponent },
+  { path: 'listCommantaire', component: ListCommantaireComponent },
+  { path: 'detailCommantaire/:id', component: DetailCommantaireComponent },
 
 
 ];
@@ -46,6 +56,12 @@ const appRoutes: Routes = [
     DetailsFilmsComponent,
     SafePipePipe,
     EditFilmComponent,
+    ListCategorieComponent,
+    AddCategorieComponent,
+    EditCategorieComponent,
+    ListCommantaireComponent,
+    DetailCommantaireComponent,
+
 
   ],
   imports: [

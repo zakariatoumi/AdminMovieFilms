@@ -7,6 +7,7 @@
                     <th scope="col">Nom</th>
                     <th scope="col">Prenom</th>
                     <th scope="col">Email</th>
+                    <th scope="col">Statut</th>
                     <th scope="col">Action</th>
                   </tr>
                 </thead>
@@ -17,8 +18,15 @@
                     <td>{{utilisateur.prenom}}</td>
                     <td>{{utilisateur.email}}</td>
                     <td>
+                      <label class="switch ml-2">
+                        <input type="checkbox" checked>
+                        <span class="slider round"></span>
+                      </label>
+                    </td>
+                    <td>
                         <button type="button" class="btn btn-outline-danger" style="width: 50px;" (click)="delete(utilisateur)"><i class="fas fa-trash-alt"></i></button>
-                        <button type="button" class="btn btn-outline-success ml-3" style="width: 50px;" [routerLink]="['/edit', utilisateur.id]"><i class="fas fa-pencil-alt"></i></button>
+                        <button type="button" class="btn btn-outline-success ml-2" style="width: 50px;" [routerLink]="['/edit', utilisateur.id]"><i class="fas fa-pencil-alt"></i></button>
+                        
                     </td>
                   </tr>
 

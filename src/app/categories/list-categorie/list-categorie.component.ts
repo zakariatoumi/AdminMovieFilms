@@ -1,29 +1,27 @@
 import { Component, OnInit } from '@angular/core';
-import { Film } from '../../Model/film';
-import { FilmService } from '../../films/film.service';
-import { DomSanitizer } from '@angular/platform-browser';
-import Swal from 'sweetalert2';
+import { CategorieService } from '../categorie.service';
+import { Categorie } from '../../Model/categorie';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-list-films',
-  templateUrl: './list-films.component.html',
-  styleUrls: ['./list-films.component.css']
+  selector: 'app-list-categorie',
+  templateUrl: './list-categorie.component.html',
+  styleUrls: ['./list-categorie.component.css']
 })
-export class ListFilmsComponent implements OnInit {
-  film: Film[];
+export class ListCategorieComponent implements OnInit {
+  categories: Categorie[];
   token: string;
 
-  constructor(private filmService: FilmService,
-              sanitizer: DomSanitizer,
+  constructor(private categorieService: CategorieService,
               private router: Router ) { }
 
   ngOnInit() {
-    this.filmService.getFilms()
-    .subscribe( (data: Film[]) => {
+    this.categorieService.getCategorie()
+    .subscribe( (data: Categorie[]) => {
 
-          this.film = data;
-          console.log(this.film);
+          this.categories = data;
+          console.log(this.categories);
 
     },
     err => {
@@ -38,7 +36,8 @@ export class ListFilmsComponent implements OnInit {
   }
   }
 
-  delete(films: Film): void {
+
+  delete(categories: Categorie): void {
     Swal.fire({
       title: 'Vous êtes sur?',
       text: 'Vous ne pourrez pas revenir sur cela!',
@@ -49,9 +48,9 @@ export class ListFilmsComponent implements OnInit {
       confirmButtonText: 'Oui, supprimez-le!'
     }).then((result) => {
       if (result.value) {
-        this.filmService.deleteFilms(films.id)
-        .subscribe( (data: Film[]) => {
-          this.film = this.film.filter(u => u !== films);
+        this.categorieService.deleteCategorie(categories.id)
+        .subscribe( (data: Categorie[]) => {
+          this.categories = this.categories.filter(u => u !== categories);
           Swal.fire(
             'Effacé!',
             'Votre utilisateur a été supprimé.',
@@ -62,6 +61,5 @@ export class ListFilmsComponent implements OnInit {
     });
   }
 
-  valider() {}
 
 }
