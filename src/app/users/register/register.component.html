@@ -11,42 +11,49 @@
 
         <form class="form-signin" [formGroup]="addForm">
 
-            <input type="text" id="inputNom" class="form-control" name="nom" formControlName="nom" placeholder="Nom" required autofocus>
-            <div *ngIf="IsFiled && f.nom.errors" class="cross-validation-error-message alert alert-danger">
+            <input type="text" id="inputNom" class="form-control" name="nom" formControlName="nom" [ngClass]="{ 'is-invalid': IsFiled && f.nom.errors }" placeholder="Nom" required autofocus>
+            <div *ngIf="IsFiled && f.nom.errors" class="invalid-feedback">
+            <div *ngIf="f.nom.errors" class="cross-validation-error-message alert alert-danger">
               Entrer votre Nom
             </div>
             <div *ngIf="f.nom.hasError('maxlength')" class="cross-validation-error-message alert alert-danger">
                 Max 20
               </div>
-
-            <input type="text" id="inputNom" class="form-control" name="prenom" formControlName="prenom" placeholder="Prenom" required>
-
-            <div *ngIf="IsFiled && f.prenom.errors" class="cross-validation-error-message alert alert-danger">
+            </div>
+            <input type="text" id="inputNom" class="form-control" name="prenom" formControlName="prenom" [ngClass]="{ 'is-invalid': IsFiled && f.prenom.errors }" placeholder="Prenom" required>
+            <div *ngIf="IsFiled && f.prenom.errors" class="invalid-feedback">
+            <div *ngIf="f.prenom.errors" class="cross-validation-error-message alert alert-danger">
               Entrer votre Prenom
             </div>
             <div *ngIf="f.prenom.hasError('maxlength')" class="cross-validation-error-message alert alert-danger">
                 Max 20
               </div>
-
-            <input type="email" id="inputEmail" class="form-control" name="email" formControlName="email" placeholder="Email address" required>
-
-            <div *ngIf="IsFiled && f.email.errors" class="cross-validation-error-message alert alert-danger">
+            </div>
+            <input type="email" id="inputEmail" class="form-control" name="email" formControlName="email" [ngClass]="{ 'is-invalid': IsFiled && f.email.errors }" placeholder="Email address" required>
+            <div *ngIf="IsFiled && f.email.errors" class="invalid-feedback">
+            <div *ngIf="f.email.errors" class="cross-validation-error-message alert alert-danger">
               Entrer votre Email
             </div>
             <div *ngIf="f.email.hasError('maxlength')" class="cross-validation-error-message alert alert-danger">
                 Max 30
               </div>
+              </div>
 
-            <input type="password" id="inputPassword" class="form-control" name="password" formControlName="password" placeholder="Mode Passe" required>
-
-            <div *ngIf="IsFiled && f.password.errors" class="cross-validation-error-message alert alert-danger">
+            <input type="password" id="inputPassword" class="form-control" name="password" [ngClass]="{ 'is-invalid': IsFiled && f.password.errors }" formControlName="password" placeholder="Mode Passe" required>
+            <div *ngIf="IsFiled && f.password.errors" class="invalid-feedback">
+            <div *ngIf="f.password.errors" class="cross-validation-error-message alert alert-danger">
               Entrer votre Mode Passe
             </div>
             <div *ngIf="f.password.hasError('maxlength')" class="cross-validation-error-message alert alert-danger">
                 Max 20
               </div>
+              </div>
 
-            <input type="password" id="inputPassword" class="form-control" placeholder="Confirmer Mode Passe" required>
+            <input type="password" id="inputPassword" formControlName="confirmPassword" class="form-control" [ngClass]="{ 'is-invalid': IsFiled && f.confirmPassword.errors }" placeholder="Confirmer Mode Passe" required>
+            <div *ngIf="IsFiled && f.confirmPassword.errors" class="invalid-feedback">
+              <div *ngIf="f.confirmPassword.errors.required" class="cross-validation-error-message alert alert-danger">Confirm votre mode passe s'il vous plaît</div>
+              <div *ngIf="f.confirmPassword.errors.mustMatch" class="cross-validation-error-message alert alert-danger">Mode passe inccorecte</div>
+          </div>
 
             <button class="btn btn-danger" (click)="onSubmit()">Inscrire</button>
         </form><!-- /form -->

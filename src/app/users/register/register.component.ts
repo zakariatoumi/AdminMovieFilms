@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from '../../user.service';
 import { Router } from '@angular/router';
+import { MustMatch } from '../../_helpers/must-match.validator';
 
 @Component({
   selector: 'app-register',
@@ -11,6 +12,7 @@ import { Router } from '@angular/router';
 export class RegisterComponent implements OnInit {
   token: string;
   IsFiled = false;
+
 
   constructor(private formBuilder: FormBuilder,
               private userService: UserService,
@@ -32,8 +34,12 @@ export class RegisterComponent implements OnInit {
       prenom: ['', [Validators.required, Validators.maxLength(20)]],
       email: ['', [Validators.required, Validators.maxLength(30)]],
       password: ['', [Validators.required, Validators.maxLength(20)]],
+      confirmPassword: ['', Validators.required],
 
-    });
+    },
+    {
+      validator: MustMatch('password', 'confirmPassword')
+  });
   }
 
   get f() {
@@ -41,6 +47,7 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit() {
+
     this.IsFiled = true;
     if (this.addForm.valid) {
     this.userService.createUsers(this.addForm.value)
@@ -51,7 +58,20 @@ export class RegisterComponent implements OnInit {
     );
     }
 
+    // stop here if form is invalid
+    if (this.addForm.invalid) {
+      return;
+  }
+
+     // display form values on success
+    alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.addForm.value, null, 4));
+
 
   }
+
+  onReset() {
+    this.IsFiled = false;
+    this.addForm.reset();
+}
 
 }
