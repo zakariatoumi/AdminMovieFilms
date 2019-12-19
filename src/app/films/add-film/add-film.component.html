@@ -13,63 +13,72 @@
                     <div class="form-group row">
                         <label class="col-lg-3 col-form-label form-control-label">Titre Film</label>
                         <div class="col-lg-9">
-                            <input class="form-control" type="text" name="titreFilm" formControlName="titreFilm" placeholder="Titre Film">
-                            <div *ngIf="IsFiled && f.titreFilm.errors" class="cross-validation-error-message alert alert-danger">
+                            <input class="form-control" type="text" [ngClass]="{ 'is-invalid': IsFiled && f.titreFilm.errors }" name="titreFilm" formControlName="titreFilm" placeholder="Titre Film">
+                            <div *ngIf="IsFiled && f.titreFilm.errors" class="invalid-feedback">
+                            <div *ngIf="f.titreFilm.errors" class="cross-validation-error-message alert alert-danger">
                               Entrer votre Titre Film
                             </div>
                             <div *ngIf="f.titreFilm.hasError('maxlength')" class="cross-validation-error-message alert alert-danger">
                                 Max 20
                               </div>
+                            </div>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-lg-3 col-form-label form-control-label">Pseudo Film</label>
                         <div class="col-lg-9">
-                            <input class="form-control" type="text" name="pseudoFilm" formControlName="pseudoFilm" placeholder="Pseudo Film">
-                            <div *ngIf="IsFiled && f.pseudoFilm.errors" class="cross-validation-error-message alert alert-danger">
+                            <input class="form-control" type="text" [ngClass]="{ 'is-invalid': IsFiled && f.pseudoFilm.errors }" name="pseudoFilm" formControlName="pseudoFilm" placeholder="Pseudo Film">
+                            <div *ngIf="IsFiled && f.pseudoFilm.errors" class="invalid-feedback">
+                            <div *ngIf="f.pseudoFilm.errors" class="cross-validation-error-message alert alert-danger">
                               Entrer votre Pseudo Film
                             </div>
                             <div *ngIf="f.pseudoFilm.hasError('maxlength')" class="cross-validation-error-message alert alert-danger">
                                 Max 20
                               </div>
+                            </div>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-lg-3 col-form-label form-control-label">Lien Film</label>
                         <div class="col-lg-9">
-                            <input class="form-control" type="text" name="lienFilm" formControlName="lienFilm" placeholder="Lien Film">
-                            <div *ngIf="IsFiled && f.lienFilm.errors" class="cross-validation-error-message alert alert-danger">
+                            <input class="form-control" type="text" [ngClass]="{ 'is-invalid': IsFiled && f.lienFilm.errors }" name="lienFilm" formControlName="lienFilm" placeholder="Lien Film">
+                            <div *ngIf="IsFiled && f.lienFilm.errors" class="invalid-feedback">
+                            <div *ngIf="f.lienFilm.errors" class="cross-validation-error-message alert alert-danger">
                               Entrer votre Lien Film
                             </div>
                             <div *ngIf="f.lienFilm.hasError('maxlength')" class="cross-validation-error-message alert alert-danger">
                                 Max 20
                               </div>
+                            </div>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-lg-3 col-form-label form-control-label">Description Film</label>
                         <div class="col-lg-9">
-                            <textarea class="form-control" type="text" name="descriptionFilm" formControlName="descriptionFilm" placeholder="Description Film"></textarea>
-                            <div *ngIf="IsFiled && f.descriptionFilm.errors" class="cross-validation-error-message alert alert-danger">
+                            <textarea class="form-control" type="text" [ngClass]="{ 'is-invalid': IsFiled && f.descriptionFilm.errors }" name="descriptionFilm" formControlName="descriptionFilm" placeholder="Description Film"></textarea>
+                            <div *ngIf="IsFiled && f.descriptionFilm.errors" class="invalid-feedback">
+                            <div *ngIf="f.descriptionFilm.errors" class="cross-validation-error-message alert alert-danger">
                               Entrer votre Description Film
                             </div>
                             <div *ngIf="f.descriptionFilm.hasError('maxlength')" class="cross-validation-error-message alert alert-danger">
                                 Max 20
                               </div>
+                            </div>
                         </div>
                     </div>
 
                     <div class="form-group row">
                         <label class="col-lg-3 col-form-label form-control-label">Categorie Film</label>
                         <div class="col-lg-9">
-                            <select id="user_time_zone" class="form-control" size="0" name="categorie" formControlName="categorie">
+                            <select id="user_time_zone" class="form-control" size="0" [ngClass]="{ 'is-invalid': IsFiled && f.categorie.errors }" name="categorie" formControlName="categorie">
                                 <option value="" selected="select">Choisir Categorie...</option>
                                 <option *ngFor="let cat of categorie" value="{{cat.id}}" class="font-weight-bold">{{ cat.libelle }}</option>
                             </select>
-                            <div *ngIf="IsFiled && f.categorie.errors" class="cross-validation-error-message alert alert-danger">
+                            <div *ngIf="IsFiled && f.categorie.errors" class="invalid-feedback">
+                            <div *ngIf="f.categorie.errors" class="cross-validation-error-message alert alert-danger">
                               S'il vous plit choisir une Categorie de Film
                             </div>
-
+                          </div>
 
                         </div>
                     </div>
