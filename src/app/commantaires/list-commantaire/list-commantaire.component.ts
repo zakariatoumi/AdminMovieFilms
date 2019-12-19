@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 })
 export class ListCommantaireComponent implements OnInit {
   commantaires: Commantaire[];
+  token: string;
 
   constructor(private commantaireService: CommantaireService,
               private router: Router) { }
@@ -27,6 +28,13 @@ export class ListCommantaireComponent implements OnInit {
       console.log(err);
       }
     );
+
+    this.token =  window.localStorage.getItem('token');
+    console.log(this.token);
+    if (!this.token) {
+    this.router.navigate(['login']);
+  }
+
   }
 
 

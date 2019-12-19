@@ -2,8 +2,20 @@
   <div class="col-md-6 mb-md-0 p-md-4">
     <img src="../../../assets/img/Creed-critique-film.jpg" class="w-100" alt="...">
   </div>
-  <div class="col-md-6 position-static p-4 pl-md-0">
-    <h5 class="mt-0 font-weight-bold" style="font-size: 30px;">{{film.titre_film}}</h5>
+  <!-- <div class="col-md-6 position-static p-4 pl-md-0">
+
+  </div> -->
+
+  
+    <div class="col-sm position-static p-4 pl-md-0">
+      <h5>Information Film</h5>
+
+    <span style="float: left;">
+      <p class="font-weight-bold" style="color: #dc3545;">Titre Film : </p>
+    </span>
+
+      <p>{{film.titre_film}}</p>
+
     <span style="float: left;">
       <p class="font-weight-bold" style="color: #dc3545;">Pseudo : </p>
     </span>
@@ -21,5 +33,28 @@
       </div>
     <p>{{film.description}}</p>
 
-  </div>
+    </div>
+
+    <div class="col-sm position-static p-4 pl-md-0">
+      <h5>Information Utilisateur</h5>
+      <div style="float: left;">
+        <p class="font-weight-bold" style="color: #dc3545;">Nom : </p>
+      </div>
+    <p>{{film.nom}}</p>
+  
+    <span style="float: left;">
+      <p class="font-weight-bold" style="color: #dc3545;">Prenom : </p>
+    </span>
+  
+      <p>{{film.prenom}}</p>
+  
+      <span style="float: left;">
+        <p class="font-weight-bold" style="color: #dc3545;">Email : </p>
+      </span>
+    
+        <p>{{film.email}}</p>
+    </div>
+    
+    
+  
 </div>
