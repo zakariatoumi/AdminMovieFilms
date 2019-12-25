@@ -84,7 +84,7 @@ export class EditFilmComponent implements OnInit {
         lien_film : this.addForm.controls.lien_film.value,
         description : this.addForm.controls.description.value,
         id_categorie : this.addForm.controls.id_categorie.value,
-        // Valid : this.addForm.controls.Valid.value,
+        Valid : this.addForm.controls.Valid.value,
       };
       this.filmService.updateFilms(body).subscribe(
           res => {

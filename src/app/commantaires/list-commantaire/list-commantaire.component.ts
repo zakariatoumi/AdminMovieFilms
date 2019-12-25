@@ -12,6 +12,21 @@ import { Router } from '@angular/router';
 export class ListCommantaireComponent implements OnInit {
   commantaires: Commantaire[];
   token: string;
+  // tslint:disable-next-line: variable-name
+  text_commantaire: string;
+
+
+  public directionLinks: boolean = true;
+  public autoHide: boolean = false;
+  public responsive: boolean = true;
+  public labels: any = {
+      previousLabel: '<--',
+      nextLabel: '-->',
+      screenReaderPaginationLabel: 'Pagination',
+      screenReaderPageLabel: 'page',
+      screenReaderCurrentLabel: `You're on page`
+  };
+  p: number=1;
 
   constructor(private commantaireService: CommantaireService,
               private router: Router) { }
@@ -60,6 +75,19 @@ export class ListCommantaireComponent implements OnInit {
         });
       }
     });
+  }
+
+  search() {
+    // tslint:disable-next-line: triple-equals
+    if (this.text_commantaire != '') {
+      this.commantaires = this.commantaires.filter(res => {
+        return res.text_commantaire.toLocaleLowerCase().match(this.text_commantaire.toLocaleLowerCase());
+      });
+    // tslint:disable-next-line: triple-equals
+    } else if (this.text_commantaire == '') {
+      this.ngOnInit();
+    }
+
   }
 
 }

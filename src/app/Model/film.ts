@@ -6,6 +6,6 @@ export class Film {
   lien_film: string;
   pseudo: string;
   description: Text;
-  //Valid: boolean;
+  Valid: boolean;
 
 }

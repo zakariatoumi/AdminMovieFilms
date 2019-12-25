@@ -19,7 +19,8 @@ export class AppComponent implements OnInit {
   console.log(this.token);
   if (!this.token) {
     this.router.navigate(['login']);
- }
+  }
+
   }
 
   logOut() {

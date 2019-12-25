@@ -12,6 +12,19 @@ import Swal from 'sweetalert2';
 export class ListCategorieComponent implements OnInit {
   categories: Categorie[];
   token: string;
+  libelle: string;
+
+  public directionLinks: boolean = true;
+  public autoHide: boolean = false;
+  public responsive: boolean = true;
+  public labels: any = {
+      previousLabel: '<--',
+      nextLabel: '-->',
+      screenReaderPaginationLabel: 'Pagination',
+      screenReaderPageLabel: 'page',
+      screenReaderCurrentLabel: `You're on page`
+  };
+  p: number=1;
 
   constructor(private categorieService: CategorieService,
               private router: Router ) { }
@@ -59,6 +72,19 @@ export class ListCategorieComponent implements OnInit {
         });
       }
     });
+  }
+
+  search() {
+    // tslint:disable-next-line: triple-equals
+    if (this.libelle != '') {
+      this.categories = this.categories.filter(res => {
+        return res.libelle.toLocaleLowerCase().match(this.libelle.toLocaleLowerCase());
+      });
+    // tslint:disable-next-line: triple-equals
+    } else if (this.libelle == '') {
+      this.ngOnInit();
+    }
+
   }
 
 

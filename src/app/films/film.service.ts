@@ -40,4 +40,8 @@ export class FilmService {
   updateFilms(film: Film) {
     return this.http.post<Film[]>(env.BASE_API_URL + 'MovieFilm/Films/update.php', film);
   }
+
+  changeuserstatus(film: Film) {
+    return this.http.post<Film[]>(env.BASE_API_URL + 'MovieFilm/Films/getByIdValide.php', film);
+  }
 }

@@ -4,6 +4,7 @@ import { FilmService } from '../../films/film.service';
 import { DomSanitizer } from '@angular/platform-browser';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-list-films',
@@ -11,19 +12,36 @@ import { Router } from '@angular/router';
   styleUrls: ['./list-films.component.css']
 })
 export class ListFilmsComponent implements OnInit {
-  film: Film[];
-  token: string;
+  titreFilm: string;
+
+  public directionLinks: boolean = true;
+  public autoHide: boolean = false;
+  public responsive: boolean = true;
+  public labels: any = {
+      previousLabel: '<--',
+      nextLabel: '-->',
+      screenReaderPaginationLabel: 'Pagination',
+      screenReaderPageLabel: 'page',
+      screenReaderCurrentLabel: `You're on page`
+  };
+  p: number=1;
+
 
   constructor(private filmService: FilmService,
               sanitizer: DomSanitizer,
               private router: Router ) { }
+  film: Film[];
+  token: string;
+  addForm: FormGroup;
+
 
   ngOnInit() {
     this.filmService.getFilms()
     .subscribe( (data: Film[]) => {
 
           this.film = data;
-          console.log(this.film);
+
+
 
     },
     err => {
@@ -62,6 +80,24 @@ export class ListFilmsComponent implements OnInit {
     });
   }
 
-  valider() {}
+  inputSelected(value) {
+    console.log(value);
+  }
+
+  search() {
+    // tslint:disable-next-line: triple-equals
+    if (this.titreFilm != '') {
+      this.film = this.film.filter(res => {
+        return res.titre_film.toLocaleLowerCase().match(this.titreFilm.toLocaleLowerCase());
+      });
+    // tslint:disable-next-line: triple-equals
+    } else if (this.titreFilm == '') {
+      this.ngOnInit();
+    }
+
+  }
+
+
+
 
 }

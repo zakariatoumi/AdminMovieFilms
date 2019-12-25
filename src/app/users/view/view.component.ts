@@ -3,6 +3,7 @@ import { UserService } from '../../user.service';
 import { User } from '../../Model/user';
 import Swal from 'sweetalert2';
 import {Router} from '@angular/router';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 @Component({
   selector: 'app-view',
@@ -13,9 +14,25 @@ export class ViewComponent implements OnInit {
   users: User[];
   messageErr: string;
   token: string;
+  config: any;
+  nom: string;
+  p: number=1;
+
+  // public maxSize: number = 10;
+  public directionLinks: boolean = true;
+  public autoHide: boolean = false;
+  public responsive: boolean = true;
+  public labels: any = {
+      previousLabel: '<--',
+      nextLabel: '-->',
+      screenReaderPaginationLabel: 'Pagination',
+      screenReaderPageLabel: 'page',
+      screenReaderCurrentLabel: `You're on page`
+  };
 
   constructor(private userService: UserService,
-              private router: Router) { }
+              private router: Router) {}
+
 
   ngOnInit() {
     this.userService.getUsers()
@@ -59,6 +76,19 @@ export class ViewComponent implements OnInit {
         });
       }
     });
+  }
+
+  search() {
+    // tslint:disable-next-line: triple-equals
+    if (this.nom != '') {
+      this.users = this.users.filter(res => {
+        return res.nom.toLocaleLowerCase().match(this.nom.toLocaleLowerCase());
+      });
+    // tslint:disable-next-line: triple-equals
+    } else if (this.nom == '') {
+      this.ngOnInit();
+    }
+
   }
 
 }

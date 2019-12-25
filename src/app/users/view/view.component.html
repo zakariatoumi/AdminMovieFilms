@@ -1,6 +1,19 @@
 
+
+
+
+
+<div class="form-inline mt-5 d-flex justify-content-end" style="background-color: darkgray;">
+  <div class="form-group">
+
+    <input type="text" [(ngModel)]="nom" class="form-control mt-2 mb-2 mr-5" (input)="search()" id="input" autofocus placeholder="Recherche Par Nom...">
+  </div>
+</div>
+
+
             <div class="table-responsive-sm" *ngIf="users.length > 0">
-            <table class="table table-bordered table-hover table-dark mt-5">
+
+            <table class="table table-bordered table-hover table-dark">
                 <thead>
                   <tr>
 
@@ -12,7 +25,8 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr *ngFor="let utilisateur of users">
+                  <!-- | paginate: config -->
+                  <tr *ngFor="let utilisateur of users | paginate: {itemsPerPage: 3, currentPage: p}">
 
                     <td>{{utilisateur.nom}}</td>
                     <td>{{utilisateur.prenom}}</td>
@@ -24,9 +38,9 @@
                       </label>
                     </td>
                     <td>
-                        <button type="button" class="btn btn-outline-danger" style="width: 50px;" (click)="delete(utilisateur)"><i class="fas fa-trash-alt"></i></button>
+                        <button type="button" class="btn btn-outline-danger ml-2" style="width: 50px;" (click)="delete(utilisateur)"><i class="fas fa-trash-alt"></i></button>
                         <button type="button" class="btn btn-outline-success ml-2" style="width: 50px;" [routerLink]="['/edit', utilisateur.id]"><i class="fas fa-pencil-alt"></i></button>
-                        
+
                     </td>
                   </tr>
 
@@ -37,6 +51,21 @@
 
             <div class="alert alert-primary mt-5 text-center font-weight-bold" role="alert" *ngIf="!(users.length > 0)">
               data vide
+            </div>
+
+            <div class="form-inline" style="background-color: darkgray;">
+              <pagination-controls
+
+                         [directionLinks]="directionLinks"
+                         [autoHide]="autoHide"
+                         [responsive]="responsive"
+                         [previousLabel]="labels.previousLabel"
+                         [nextLabel]="labels.nextLabel"
+                         [screenReaderPaginationLabel]="labels.screenReaderPaginationLabel"
+                         [screenReaderPageLabel]="labels.screenReaderPageLabel"
+                         [screenReaderCurrentLabel]="labels.screenReaderCurrentLabel"
+              (pageChange)="p = $event"></pagination-controls
+                >
             </div>
 
 

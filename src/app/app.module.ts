@@ -1,5 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA  } from '@angular/core';
+import {NgxPaginationModule} from 'ngx-pagination';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import 'hammerjs';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -21,6 +24,7 @@ import { AddCategorieComponent } from './categories/add-categorie/add-categorie.
 import { EditCategorieComponent } from './categories/edit-categorie/edit-categorie.component';
 import { ListCommantaireComponent } from './commantaires/list-commantaire/list-commantaire.component';
 import { DetailCommantaireComponent } from './commantaires/detail-commantaire/detail-commantaire.component';
+
 
 
 const appRoutes: Routes = [
@@ -63,6 +67,7 @@ const appRoutes: Routes = [
     DetailCommantaireComponent,
 
 
+
   ],
   imports: [
     BrowserModule,
@@ -74,8 +79,11 @@ const appRoutes: Routes = [
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    NgxPaginationModule,
+    BrowserAnimationsModule,
   ],
   providers: [{provide: APP_BASE_HREF, useValue: '/'}],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
 export class AppModule { }

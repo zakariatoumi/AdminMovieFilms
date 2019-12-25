@@ -1,6 +1,13 @@
 
+            <div class="form-inline mt-5 d-flex justify-content-end" style="background-color: darkgray;">
+              <div class="form-group">
+
+                <input type="text" [(ngModel)]="text_commantaire" class="form-control mt-2 mb-2 mr-5" (input)="search()" id="input" autofocus placeholder="Recherche Par Texte...">
+              </div>
+            </div>
+
             <div class="table-responsive-sm">
-                <table class="table table-bordered table-hover table-dark mt-5" *ngIf="commantaires.length > 0">
+                <table class="table table-bordered table-hover table-dark" *ngIf="commantaires.length > 0">
                     <thead>
                       <tr>
 
@@ -10,12 +17,12 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr *ngFor="let commantaire of commantaires">
+                      <tr *ngFor="let commantaire of commantaires | paginate: {itemsPerPage: 3, currentPage: p}">
 
                         <td style="width: 80%;">{{commantaire.text_commantaire}} </td>
 
                         <td>
-                            <button type="button" class="btn btn-outline-danger " style="width: 50px;" (click)="delete(commantaire)"><i class="fas fa-trash-alt"></i></button>
+                            <button type="button" class="btn btn-outline-danger ml-2" style="width: 50px;" (click)="delete(commantaire)"><i class="fas fa-trash-alt"></i></button>
                             <!-- <button type="button" class="btn btn-outline-success ml-2" style="width: 50px;" [routerLink]="['/editCommantaire']" routerLinkActive="router-link-active" ><i class="fas fa-pencil-alt"></i></button> -->
                             <button type="button" class="btn btn-outline-primary ml-2" style="width: 50px;" [routerLink]="['/detailCommantaire', commantaire.id]" routerLinkActive="router-link-active" ><i class="fas fa-info"></i></button>
 
@@ -31,6 +38,21 @@
 
                 <div class="alert alert-primary mt-5 text-center font-weight-bold" role="alert" *ngIf="!(commantaires.length > 0)">
                   data vide
+                </div>
+
+
+                <div class="form-inline" style="background-color: darkgray;">
+                  <pagination-controls
+
+                             [directionLinks]="directionLinks"
+                             [autoHide]="autoHide"
+                             [responsive]="responsive"
+                             [previousLabel]="labels.previousLabel"
+                             [nextLabel]="labels.nextLabel"
+                             [screenReaderPaginationLabel]="labels.screenReaderPaginationLabel"
+                             [screenReaderPageLabel]="labels.screenReaderPageLabel"
+                             [screenReaderCurrentLabel]="labels.screenReaderCurrentLabel"
+                  (pageChange)="p = $event"></pagination-controls>
                 </div>
 
 
