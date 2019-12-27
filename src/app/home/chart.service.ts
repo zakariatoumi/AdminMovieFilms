@@ -14,18 +14,22 @@ export class ChartService {
   constructor(private http: HttpClient) { }
 
   getAllUsers() {
-    return this.http.get( env.BASE_API_URL + 'MovieFilm/Chart/list_user.php');
+    return this.http.get( env.BASE_API_URL + 'MovieFilm/Chart/Count_user.php');
   }
 
   getAllFilms() {
-    return this.http.get( env.BASE_API_URL + 'MovieFilm/Chart/list_film.php');
+    return this.http.get( env.BASE_API_URL + 'MovieFilm/Chart/Count_film.php');
   }
 
   getAllCategories() {
-    return this.http.get( env.BASE_API_URL + 'MovieFilm/Chart/list_categorie.php');
+    return this.http.get( env.BASE_API_URL + 'MovieFilm/Chart/Count_categorie.php');
   }
 
   getAllCommantaire() {
-    return this.http.get( env.BASE_API_URL + 'MovieFilm/Chart/list_commantaire.php');
+    return this.http.get( env.BASE_API_URL + 'MovieFilm/Chart/Count_commantaire.php');
+  }
+
+  ListUser() {
+    return this.http.get( env.BASE_API_URL + 'MovieFilm/Chart/listUser.php');
   }
 }
