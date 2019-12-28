@@ -59,7 +59,7 @@ export class EditCategorieComponent implements OnInit {
       this.categorieService.updateCategorie(body).subscribe(
           res => {
             console.log(res);
-            this.router.navigate(['listCategorie']);
+            this.router.navigate(['/accueil/listCategorie']);
           }
         );
     }

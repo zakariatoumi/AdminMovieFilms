@@ -18,7 +18,7 @@ export class HomeComponent implements OnInit {
   BarChart = [];
   myLineChart = [];
   PieChart = [];
-  users: User[];
+  users;
   films: Film[];
   categories: Categorie[];
   commantaires: Commantaire[];
@@ -32,10 +32,10 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
 
     this.chartService.getAllUsers()
-    .subscribe( (data: User[]) => {
+    .subscribe( (data:any) => {
 
         this.users = data;
-        console.log(this.users);
+        this.chartBar();
 
     },
     err => {
@@ -44,10 +44,12 @@ export class HomeComponent implements OnInit {
     );
 
     this.chartService.getAllFilms()
-    .subscribe( (data: Film[]) => {
+    .subscribe( (data:any) => {
 
         this.films = data;
-        console.log(this.films);
+        this.chartBar();
+
+        // console.log(this.films);
 
     },
     err => {
@@ -56,10 +58,12 @@ export class HomeComponent implements OnInit {
     );
 
     this.chartService.getAllCategories()
-    .subscribe( (data: Categorie[]) => {
+    .subscribe( (data:any) => {
 
         this.categories = data;
-        console.log(this.categories);
+        this.chartBar();
+
+        // console.log(this.categories);
 
     },
     err => {
@@ -68,10 +72,12 @@ export class HomeComponent implements OnInit {
     );
 
     this.chartService.getAllCommantaire()
-    .subscribe( (data: Commantaire[]) => {
+    .subscribe( (data:any) => {
 
         this.commantaires = data;
-        console.log(this.commantaires);
+        this.chartBar();
+
+        // console.log(this.commantaires);
 
     },
     err => {
@@ -85,56 +91,13 @@ export class HomeComponent implements OnInit {
     this.router.navigate(['login']);
   }
 
-
-
-    this.BarChart = new Chart('barChart', {
-  type: 'bar',
-  data: {
-      labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-      datasets: [{
-          label: '# of Votes',
-          data: [12, 20, 3, 5, 2, 3],
-          backgroundColor: [
-              'rgba(255, 99, 132, 0.2)',
-              'rgba(54, 162, 235, 0.2)',
-              'rgba(255, 206, 86, 0.2)',
-              'rgba(75, 192, 192, 0.2)',
-              'rgba(153, 102, 255, 0.2)',
-              'rgba(255, 159, 64, 0.2)'
-          ],
-          borderColor: [
-              'rgba(255, 99, 132, 1)',
-              'rgba(54, 162, 235, 1)',
-              'rgba(255, 206, 86, 1)',
-              'rgba(75, 192, 192, 1)',
-              'rgba(153, 102, 255, 1)',
-              'rgba(255, 159, 64, 1)'
-          ],
-          borderWidth: 1
-      }]
-  },
-  options: {
-    title: {
-      text: 'Bar Chart',
-      display: true
-  },
-      scales: {
-          yAxes: [{
-              ticks: {
-                  beginAtZero: true
-              }
-          }]
-      }
-  }
-});
-
     this.myLineChart = new Chart('mylineChart', {
   type: 'line',
   data: {
     labels: ['Jan', 'Feb', 'March', 'April', 'May', 'June', 'July', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
     datasets: [{
         label: 'Number of Items Sold in Months',
-        data: [9, 7 , 3, 5, 2, 10, 15, 16, 19, 3, 1, 9],
+        data: [0, 9 , 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         fill: false,
         lineTension: 0.2,
         borderColor: 'red',
@@ -199,4 +162,43 @@ options: {
 
 }
 
+
+  private chartBar() {
+    this.BarChart = new Chart('barChart', {
+      type: 'bar',
+      data: {
+        labels: ['Red', 'Blue', 'Yellow', 'Green'],
+        datasets: [{
+          label: '# of Votes',
+          data: [Number(this.users), Number(this.films), Number(this.categories), Number(this.commantaires)],
+          backgroundColor: [
+            'rgba(255, 99, 132, 0.2)',
+            'rgba(54, 162, 235, 0.2)',
+            'rgba(255, 206, 86, 0.2)',
+            'rgba(75, 192, 192, 0.2)'
+          ],
+          borderColor: [
+            'rgba(255, 99, 132, 1)',
+            'rgba(54, 162, 235, 1)',
+            'rgba(255, 206, 86, 1)',
+            'rgba(75, 192, 192, 1)'
+          ],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        title: {
+          text: 'Bar Chart',
+          display: true
+        },
+        scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero: true
+            }
+          }]
+        }
+      }
+    });
+  }
 }

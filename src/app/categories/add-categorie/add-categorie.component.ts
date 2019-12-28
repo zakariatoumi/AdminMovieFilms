@@ -45,7 +45,7 @@ export class AddCategorieComponent implements OnInit {
     this.categorieService.addCategorie(this.addForm.value)
     .subscribe(
       data => {
-        this.router.navigate(['listCategorie']);
+        this.router.navigate(['/accueil/listCategorie']);
       }
     );
     }

@@ -7,24 +7,12 @@ import {Router} from '@angular/router';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  title = 'AdminMovieFilms';
-  token: string;
 
-  constructor(private router: Router
-              ) { }
+  constructor() { }
 
 
   ngOnInit() {
-  this.token =  localStorage.getItem('token');
-  console.log(this.token);
-  if (!this.token) {
-    this.router.navigate(['login']);
-  }
 
   }
 
-  logOut() {
-    window.localStorage.removeItem('token');
-    this.router.navigate(['login']);
-  }
 }

@@ -67,7 +67,7 @@ export class EditUserComponent implements OnInit {
       this.userService.updateUsers(body).subscribe(
           res => {
             console.log(res);
-            this.router.navigate(['view']);
+            this.router.navigate(['/accueil/view']);
           }
         );
     }

@@ -62,7 +62,7 @@ export class AddFilmComponent implements OnInit {
     this.filmService.addFilms(this.addForm.value)
     .subscribe(
       data => {
-        this.router.navigate(['listFilms']);
+        this.router.navigate(['/accueil/listFilms']);
       }
     );
     }
