@@ -32,7 +32,7 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
 
     this.chartService.getAllUsers()
-    .subscribe( (data:any) => {
+    .subscribe( (data: any ) => {
 
         this.users = data;
         this.chartBar();
@@ -44,7 +44,7 @@ export class HomeComponent implements OnInit {
     );
 
     this.chartService.getAllFilms()
-    .subscribe( (data:any) => {
+    .subscribe( (data: any ) => {
 
         this.films = data;
         this.chartBar();
@@ -167,28 +167,28 @@ options: {
     this.BarChart = new Chart('barChart', {
       type: 'bar',
       data: {
-        labels: ['Red', 'Blue', 'Yellow', 'Green'],
+        labels: ['Utilisateurs', 'Films', 'Categories', 'Commantaires'],
         datasets: [{
-          label: '# of Votes',
+          label: '# des votes',
           data: [Number(this.users), Number(this.films), Number(this.categories), Number(this.commantaires)],
           backgroundColor: [
-            'rgba(255, 99, 132, 0.2)',
             'rgba(54, 162, 235, 0.2)',
-            'rgba(255, 206, 86, 0.2)',
-            'rgba(75, 192, 192, 0.2)'
+            'rgb(49, 143, 69, 0.2)',
+            'rgb(23, 162, 184, 0.2)',
+            'rgba(255, 206, 86, 0.2)'
           ],
           borderColor: [
-            'rgba(255, 99, 132, 1)',
             'rgba(54, 162, 235, 1)',
-            'rgba(255, 206, 86, 1)',
-            'rgba(75, 192, 192, 1)'
+            'rgb(49, 143, 69, 1)',
+            'rgb(23, 162, 184, 1)',
+            'rgba(255, 206, 86, 1)'
           ],
           borderWidth: 1
         }]
       },
       options: {
         title: {
-          text: 'Bar Chart',
+          text: 'Chart de toute les tables',
           display: true
         },
         scales: {
