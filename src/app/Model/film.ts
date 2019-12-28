@@ -9,3 +9,8 @@ export class Film {
   //Valid: boolean;
 
 }
+
+export class Toggle {
+  id: number;
+  status: number;
+}

@@ -55,8 +55,8 @@
               </a>
               <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" *ngIf="token" (click)="logOut()">Deconnecter</a>
-                <a class="dropdown-item" routerLink="/login">Connecter</a>
-                <a class="dropdown-item" routerLink="/Register">Inscrire</a>
+                <a class="dropdown-item" *ngIf="!token" routerLink="/login">Connecter</a>
+                <!-- <a class="dropdown-item" routerLink="/Register">Inscrire</a> -->
 
               </div>
             </li>

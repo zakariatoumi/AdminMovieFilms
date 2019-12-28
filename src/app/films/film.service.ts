@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { environment as env } from 'src/environments/environment';
-import { Film } from '../Model/film';
+import { Film, Toggle } from '../Model/film';
 import { Categorie } from '../Model/categorie';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
@@ -41,7 +41,10 @@ export class FilmService {
     return this.http.post<Film[]>(env.BASE_API_URL + 'MovieFilm/Films/update.php', film);
   }
 
-  changeuserstatus(film: Film) {
-    return this.http.post<Film[]>(env.BASE_API_URL + 'MovieFilm/Films/getByIdValide.php', film);
+  changeuserstatus(id,status) {
+    console.log(id);
+    console.log(status);
+
+    return this.http.get<Film[]>(env.BASE_API_URL + 'MovieFilm/Films/getByIdValide.php?id='+id+'&status='+status);
   }
 }

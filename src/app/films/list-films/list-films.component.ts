@@ -25,6 +25,7 @@ export class ListFilmsComponent implements OnInit {
       screenReaderCurrentLabel: `You're on page`
   };
   p: number=1;
+  status = 0
 
 
   constructor(private filmService: FilmService,
@@ -36,24 +37,23 @@ export class ListFilmsComponent implements OnInit {
 
 
   ngOnInit() {
-    this.filmService.getFilms()
-    .subscribe( (data: Film[]) => {
-
-          this.film = data;
-
-
-
-    },
-    err => {
-      console.log(err);
-      }
-    );
+    this.getFilms();
 
     this.token =  window.localStorage.getItem('token');
     console.log(this.token);
     if (!this.token) {
     this.router.navigate(['login']);
   }
+  }
+
+  private getFilms() {
+    this.filmService.getFilms()
+      .subscribe((data: Film[]) => {
+        this.film = [];
+        this.film = data;
+      }, err => {
+        console.log(err);
+      });
   }
 
   delete(films: Film): void {
@@ -80,8 +80,14 @@ export class ListFilmsComponent implements OnInit {
     });
   }
 
-  inputSelected(value) {
-    console.log(value);
+  inputSelected(id,valid) {
+    console.log('id');
+    console.log(valid);
+    this.status = (valid == 0) ? 1:0;
+    this.filmService.changeuserstatus(id,this.status).subscribe(res => {
+      // refrach data
+      this.getFilms();
+    });
   }
 
   search() {

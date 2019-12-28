@@ -24,6 +24,7 @@ import { AddCategorieComponent } from './categories/add-categorie/add-categorie.
 import { EditCategorieComponent } from './categories/edit-categorie/edit-categorie.component';
 import { ListCommantaireComponent } from './commantaires/list-commantaire/list-commantaire.component';
 import { DetailCommantaireComponent } from './commantaires/detail-commantaire/detail-commantaire.component';
+import { AccueilComponent } from './accueil/accueil.component';
 
 
 
@@ -33,7 +34,7 @@ const appRoutes: Routes = [
   { path: 'AjouterFilm', component: AddFilmComponent },
   { path: 'listFilms', component: ListFilmsComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'Register', component: RegisterComponent },
+  // { path: 'Register', component: RegisterComponent },
   { path: 'view', component: ViewComponent },
   { path: 'edit/:id', component: EditUserComponent },
   { path: 'details/:id', component: DetailsFilmsComponent },
@@ -65,6 +66,7 @@ const appRoutes: Routes = [
     EditCategorieComponent,
     ListCommantaireComponent,
     DetailCommantaireComponent,
+    AccueilComponent,
 
 
 

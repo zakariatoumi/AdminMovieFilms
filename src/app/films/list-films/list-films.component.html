@@ -24,23 +24,30 @@
                         <!-- <iframe [src]="sanitizer.bypassSecurityTrustResourceUrl(fil.lien_film)" height="600" width="1000"></iframe> -->
                         <td>{{fil.pseudo}}</td>
                         <td>
-                          <div class="ml-2" *ngIf="fil.Valid == 1">
+                          <ng-container *ngIf="fil.Valid == 1; else elseTemplate">
+                            <div class="ml-2">
 
                               <label class="switch">
-                                <input type="checkbox" #target checked (click)="inputSelected(target.value)" value="1">
+                                <input type="checkbox" checked (click)="inputSelected(fil.id,fil.Valid)">
                                 <span class="slider round"></span>
                               </label>
 
                           </div>
+                          </ng-container>
+                          <ng-template #elseTemplate>
 
-                          <div class="ml-2" *ngIf="fil.Valid == 0">
+                            <div class="ml-2">
 
-                              <label class="switch">
-                                <input type="checkbox" #target (click)="inputSelected(target.value)" value="0">
-                                <span class="slider round"></span>
-                              </label>
+                                <label class="switch">
+                                  <input type="checkbox" (click)="inputSelected(fil.id,fil.Valid)">
+                                  <span class="slider round"></span>
+                                </label>
 
-                          </div>
+                            </div>
+                          </ng-template>
+
+
+
 
 
 
