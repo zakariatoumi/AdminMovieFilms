@@ -34,7 +34,7 @@ export class ListCategorieComponent implements OnInit {
     .subscribe( (data: Categorie[]) => {
 
           this.categories = data;
-          console.log(this.categories);
+          // console.log(this.categories);
 
     },
     err => {
@@ -42,8 +42,8 @@ export class ListCategorieComponent implements OnInit {
       }
     );
 
-    this.token =  window.localStorage.getItem('token');
-    console.log(this.token);
+    this.token =  window.sessionStorage.getItem('token');
+    // console.log(this.token);
     if (!this.token) {
     this.router.navigate(['login']);
   }

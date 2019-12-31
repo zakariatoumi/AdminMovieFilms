@@ -27,7 +27,8 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.loginForm.value);
+    // console.log('login');
+    // console.log(this.loginForm.value);
 
     if (this.loginForm.invalid) {
       return;
@@ -44,7 +45,8 @@ export class LoginComponent implements OnInit {
       // console.log(data.token);
       if (data.token) {
 
-          window.localStorage.setItem('token', data.token);
+          sessionStorage.setItem('token', data.token);
+          sessionStorage.setItem('email', data.email);
           this.router.navigate(['/']);
        } else {
          this.invalidLogin = true;

@@ -14,7 +14,17 @@
               <a class="dropdown-item" routerLink="/accueil/listFilms">Listes Films</a>
             </div>
             </div>
-      <a routerLink="/accueil/view" class="list-group-item list-group-item-action bg-danger text-light font-weight-bold">Utilisateurs</a>
+
+            <a class="dropdown-toggle list-group-item list-group-item-action bg-danger text-light font-weight-bold" data-toggle="collapse" href="#multiCollapseExample11" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">
+              Utilisateurs
+            </a>
+            <div class="collapse multi-collapse" id="multiCollapseExample11">
+              <div class="card card-body">
+              <a class="dropdown-item" routerLink="/accueil/AjouterUser">Ajouter Utilisateur</a>
+              <a class="dropdown-item" routerLink="/accueil/view">Listes Utilisateurs</a>
+            </div>
+            </div>
+      <!-- <a routerLink="/accueil/view" class="list-group-item list-group-item-action bg-danger text-light font-weight-bold">Utilisateurs</a> -->
       <a class="dropdown-toggle list-group-item list-group-item-action bg-danger text-light font-weight-bold" data-toggle="collapse" href="#multiCollapseExample2" role="button" aria-expanded="false" aria-controls="multiCollapseExample2">
         Categotie
       </a>
@@ -50,13 +60,12 @@
           </li>
 
           <li class="nav-item dropdown">
+
             <a class="nav-link dropdown-toggle font-weight-bold text-light list-group-item-action bg-danger" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Profile
+              {{email}}
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" *ngIf="token" (click)="logOut()">Deconnecter</a>
-              <!-- <a class="dropdown-item" *ngIf="!token" routerLink="/login">Connecter</a> -->
-              <!-- <a class="dropdown-item" routerLink="/Register">Inscrire</a> -->
 
             </div>
           </li>

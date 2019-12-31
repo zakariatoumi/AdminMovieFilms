@@ -42,8 +42,8 @@ export class FilmService {
   }
 
   changeuserstatus(id,status) {
-    console.log(id);
-    console.log(status);
+    // console.log(id);
+    // console.log(status);
 
     return this.http.get<Film[]>(env.BASE_API_URL + 'MovieFilm/Films/getByIdValide.php?id='+id+'&status='+status);
   }

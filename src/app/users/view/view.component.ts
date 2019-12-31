@@ -39,7 +39,7 @@ export class ViewComponent implements OnInit {
     .subscribe( (data: User[]) => {
 
         this.users = data;
-        console.log(this.users);
+        // console.log(this.users);
 
     },
     err => {
@@ -47,8 +47,8 @@ export class ViewComponent implements OnInit {
       }
     );
 
-    this.token =  window.localStorage.getItem('token');
-    console.log(this.token);
+    this.token =  window.sessionStorage.getItem('token');
+    // console.log(this.token);
     if (!this.token) {
     this.router.navigate(['login']);
   }

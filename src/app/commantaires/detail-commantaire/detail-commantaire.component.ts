@@ -26,7 +26,7 @@ export class DetailCommantaireComponent implements OnInit {
       (data: Commantaire[]) => {
 
         this.commantaires = data;
-        console.log(this.commantaires);
+        // console.log(this.commantaires);
 
     },
     err => {

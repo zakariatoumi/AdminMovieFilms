@@ -31,7 +31,7 @@ export class DetailsFilmsComponent implements OnInit {
       (data: Film[]) => {
 
         this.film = data;
-        console.log(this.film);
+        // console.log(this.film);
 
     },
     err => {

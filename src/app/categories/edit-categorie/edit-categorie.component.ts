@@ -29,8 +29,8 @@ export class EditCategorieComponent implements OnInit {
     this.id = this.route.snapshot.params.id;
     this.getCategorieByID(this.id);
 
-    this.token =  window.localStorage.getItem('token');
-    console.log(this.token);
+    this.token =  window.sessionStorage.getItem('token');
+    // console.log(this.token);
     if (!this.token) {
     this.router.navigate(['login']);
   }
@@ -40,7 +40,7 @@ export class EditCategorieComponent implements OnInit {
   getCategorieByID(id) {
     this.categorieService.getCategorieByID(id).subscribe(
       res => {
-        console.log(res);
+        // console.log(res);
         this.addForm.controls['libelle'].setValue(res['libelle']);
     });
   }
@@ -58,7 +58,7 @@ export class EditCategorieComponent implements OnInit {
       };
       this.categorieService.updateCategorie(body).subscribe(
           res => {
-            console.log(res);
+            // console.log(res);
             this.router.navigate(['/accueil/listCategorie']);
           }
         );

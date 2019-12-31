@@ -25,7 +25,7 @@ export class AddFilmComponent implements OnInit {
     .subscribe( (data: Categorie[]) => {
 
         this.categorie = data;
-        console.log(this.categorie);
+        // console.log(this.categorie);
 
     },
     err => {
@@ -43,8 +43,8 @@ export class AddFilmComponent implements OnInit {
 
     });
 
-    this.token =  window.localStorage.getItem('token');
-    console.log(this.token);
+    this.token =  window.sessionStorage.getItem('token');
+    // console.log(this.token);
     if (!this.token) {
     this.router.navigate(['login']);
   }

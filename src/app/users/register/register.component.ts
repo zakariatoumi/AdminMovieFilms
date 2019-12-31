@@ -24,8 +24,8 @@ export class RegisterComponent implements OnInit {
   addForm: FormGroup;
 
   ngOnInit() {
-    this.token =  window.localStorage.getItem('token');
-    console.log(this.token);
+    this.token =  window.sessionStorage.getItem('token');
+    // console.log(this.token);
     if (!this.token) {
       this.router.navigate(['login']);
     }
@@ -54,7 +54,7 @@ export class RegisterComponent implements OnInit {
     this.userService.createUsers(this.addForm.value)
     .subscribe(
       data => {
-        this.router.navigate(['view']);
+        this.router.navigate(['/accueil/view']);
       }
     );
     }

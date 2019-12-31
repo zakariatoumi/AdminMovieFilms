@@ -37,7 +37,7 @@ export class EditFilmComponent implements OnInit {
     .subscribe( (data: Categorie[]) => {
 
         this.categorie = data;
-        console.log(this.categorie);
+        // console.log(this.categorie);
 
     },
     err => {
@@ -50,8 +50,8 @@ export class EditFilmComponent implements OnInit {
     this.id = this.route.snapshot.params.id;
     this.getFilmsByID(this.id);
 
-    this.token =  window.localStorage.getItem('token');
-    console.log(this.token);
+    this.token =  window.sessionStorage.getItem('token');
+    // console.log(this.token);
     if (!this.token) {
     this.router.navigate(['login']);
   }
@@ -61,7 +61,7 @@ export class EditFilmComponent implements OnInit {
     getFilmsByID(id) {
     this.filmService.getFilmsByID(id).subscribe(
       res => {
-        console.log(res);
+        // console.log(res);
         this.addForm.controls['titre_film'].setValue(res['titre_film']);
         this.addForm.controls['pseudo'].setValue(res['pseudo']);
         this.addForm.controls['lien_film'].setValue(res['lien_film']);
@@ -88,8 +88,8 @@ export class EditFilmComponent implements OnInit {
       };
       this.filmService.updateFilms(body).subscribe(
           res => {
-            console.log(res);
-            this.router.navigate(['listFilms']);
+            // console.log(res);
+            this.router.navigate(['/accueil/listFilms']);
           }
         );
     }

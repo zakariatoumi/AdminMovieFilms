@@ -4,27 +4,27 @@ $( document ).ready(function() {
     // Test data
     /*
      * To test the script you should discomment the function
-     * testLocalStorageData and refresh the page. The function
+     * testsessionStorageData and refresh the page. The function
      * will load some test data and the loadProfile
      * will do the changes in the UI
      */
-    // testLocalStorageData();
+    // testsessionStorageData();
     // Load profile if it exits
     loadProfile();
 });
 
 /**
  * Function that gets the data of the profile in case
- * thar it has already saved in localstorage. Only the
+ * thar it has already saved in sessionStorage. Only the
  * UI will be update in case that all data is available
  *
- * A not existing key in localstorage return null
+ * A not existing key in sessionStorage return null
  *
  */
 function getLocalProfile(callback){
-    var profileImgSrc      = localStorage.getItem("PROFILE_IMG_SRC");
-    var profileName        = localStorage.getItem("PROFILE_NAME");
-    var profileReAuthEmail = localStorage.getItem("PROFILE_REAUTH_EMAIL");
+    var profileImgSrc      = sessionStorage.getItem("PROFILE_IMG_SRC");
+    var profileName        = sessionStorage.getItem("PROFILE_NAME");
+    var profileReAuthEmail = sessionStorage.getItem("PROFILE_REAUTH_EMAIL");
 
     if(profileName !== null
             && profileReAuthEmail !== null
@@ -35,7 +35,7 @@ function getLocalProfile(callback){
 
 /**
  * Main function that load the profile if exists
- * in localstorage
+ * in sessionStorage
  */
 function loadProfile() {
     if(!supportsHTML5Storage()) { return false; }
@@ -59,7 +59,7 @@ function loadProfile() {
  */
 function supportsHTML5Storage() {
     try {
-        return 'localStorage' in window && window['localStorage'] !== null;
+        return 'sessionStorage' in window && window['sessionStorage'] !== null;
     } catch (e) {
         return false;
     }
@@ -68,14 +68,14 @@ function supportsHTML5Storage() {
 /**
  * Test data. This data will be safe by the web app
  * in the first successful login of a auth user.
- * To Test the scripts, delete the localstorage data
+ * To Test the scripts, delete the sessionStorage data
  * and comment this call.
  *
  * @returns {boolean}
  */
-function testLocalStorageData() {
+function testsessionStorageData() {
     if(!supportsHTML5Storage()) { return false; }
-    localStorage.setItem("PROFILE_IMG_SRC", "//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" );
-    localStorage.setItem("PROFILE_NAME", "César Izquierdo Tello");
-    localStorage.setItem("PROFILE_REAUTH_EMAIL", "oneaccount@gmail.com");
+    sessionStorage.setItem("PROFILE_IMG_SRC", "//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" );
+    sessionStorage.setItem("PROFILE_NAME", "César Izquierdo Tello");
+    sessionStorage.setItem("PROFILE_REAUTH_EMAIL", "oneaccount@gmail.com");
 }

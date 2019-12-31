@@ -9,12 +9,18 @@ import { Router } from '@angular/router';
 export class AccueilComponent implements OnInit {
   title = 'AdminMovieFilms';
   token: string;
-  constructor(private router:Router) { }
+  email: string;
+  constructor(private router: Router ) { }
 
 
   ngOnInit() {
-    this.token =  localStorage.getItem('token');
-    console.log(this.token);
+    this.email = sessionStorage.getItem('email');
+    // console.log('email');
+    // console.log(this.email);
+    this.token =  sessionStorage.getItem('token');
+    // console.log('token');
+    // console.log(this.token);
+    
     if (!this.token) {
       this.router.navigate(['login']);
     }
@@ -22,7 +28,7 @@ export class AccueilComponent implements OnInit {
     }
 
     logOut() {
-      window.localStorage.removeItem('token');
+      window.sessionStorage.removeItem('token');
       this.router.navigate(['login']);
     }
 }

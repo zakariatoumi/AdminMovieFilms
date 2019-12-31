@@ -34,8 +34,8 @@ export class EditUserComponent implements OnInit {
     this.id = this.route.snapshot.params.id;
     this.getUsersByID(this.id);
 
-    this.token =  window.localStorage.getItem('token');
-    console.log(this.token);
+    this.token =  window.sessionStorage.getItem('token');
+    // console.log(this.token);
     if (!this.token) {
     this.router.navigate(['login']);
   }
@@ -44,7 +44,7 @@ export class EditUserComponent implements OnInit {
   getUsersByID(id) {
     this.userService.getUsersByID(id).subscribe(
       res => {
-        console.log(res);
+        // console.log(res);
         this.addForm.controls['nom'].setValue(res['nom']);
         this.addForm.controls['prenom'].setValue(res['prenom']);
         this.addForm.controls['email'].setValue(res['email']);
@@ -66,7 +66,7 @@ export class EditUserComponent implements OnInit {
       };
       this.userService.updateUsers(body).subscribe(
           res => {
-            console.log(res);
+            // console.log(res);
             this.router.navigate(['/accueil/view']);
           }
         );

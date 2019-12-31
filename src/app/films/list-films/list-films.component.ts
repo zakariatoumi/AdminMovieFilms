@@ -39,8 +39,8 @@ export class ListFilmsComponent implements OnInit {
   ngOnInit() {
     this.getFilms();
 
-    this.token =  window.localStorage.getItem('token');
-    console.log(this.token);
+    this.token =  window.sessionStorage.getItem('token');
+    // console.log(this.token);
     if (!this.token) {
     this.router.navigate(['login']);
   }
@@ -81,8 +81,8 @@ export class ListFilmsComponent implements OnInit {
   }
 
   inputSelected(id,valid) {
-    console.log('id');
-    console.log(valid);
+    // console.log('id');
+    // console.log(valid);
     this.status = (valid == 0) ? 1:0;
     this.filmService.changeuserstatus(id,this.status).subscribe(res => {
       // refrach data

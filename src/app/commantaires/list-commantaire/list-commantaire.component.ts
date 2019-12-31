@@ -36,7 +36,7 @@ export class ListCommantaireComponent implements OnInit {
     .subscribe( (data: Commantaire[]) => {
 
         this.commantaires = data;
-        console.log(this.commantaires);
+        // console.log(this.commantaires);
 
     },
     err => {
@@ -44,8 +44,8 @@ export class ListCommantaireComponent implements OnInit {
       }
     );
 
-    this.token =  window.localStorage.getItem('token');
-    console.log(this.token);
+    this.token =  window.sessionStorage.getItem('token');
+    // console.log(this.token);
     if (!this.token) {
     this.router.navigate(['login']);
   }

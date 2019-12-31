@@ -1,67 +1,92 @@
+<!--/col-->
+<div class="col-md-8 offset-md-2 text-black-50 mb-5">
+  <span class="anchor" id="formUserEdit"></span>
+  <hr class="">
 
-<link rel="stylesheet" href="assets/css/StyleLogin.css">
-<br>
-<div class="container">
-    <div class="card bg-dark card-container">
-        <!-- <img class="profile-img-card" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" alt="" /> -->
-        <!--<img id="profile-img" class="profile-img-card" src="img/avatar_2x.png" />-->
-
-        <p class="profile-img-card font-weight-bold text-light" style="font-size: 18px;">Inscription</p>
-
-
-        <form class="form-signin" [formGroup]="addForm">
-
-            <input type="text" id="inputNom" class="form-control" name="nom" formControlName="nom" [ngClass]="{ 'is-invalid': IsFiled && f.nom.errors }" placeholder="Nom" required autofocus>
-            <div *ngIf="IsFiled && f.nom.errors" class="invalid-feedback">
-            <div *ngIf="f.nom.errors" class="cross-validation-error-message alert alert-danger">
-              Entrer votre Nom
-            </div>
-            <div *ngIf="f.nom.hasError('maxlength')" class="cross-validation-error-message alert alert-danger">
-                Max 20
+  <!-- form user info -->
+  <div class="card bg-dark text-light card-outline-secondary">
+      <div class="card-header" style="background-color: rgb(102, 102, 102);">
+          <h3 class="mb-0">Ajouter Utilisateur</h3>
+      </div>
+      <div class="card-body">
+          <form class="form" role="form" autocomplete="off" [formGroup]="addForm">
+              <div class="form-group row">
+                  <label class="col-lg-3 col-form-label form-control-label">Nom</label>
+                  <div class="col-lg-9">
+                      <input class="form-control" type="text" [ngClass]="{ 'is-invalid': IsFiled && f.nom.errors }" name="nom" formControlName="nom" placeholder="Nom">
+                      <div *ngIf="IsFiled && f.nom.errors" class="invalid-feedback">
+                      <div *ngIf="f.nom.errors" class="cross-validation-error-message alert alert-danger">
+                        Entrer votre Nom
+                      </div>
+                      <div *ngIf="f.nom.hasError('maxlength')" class="cross-validation-error-message alert alert-danger">
+                          Max 20
+                        </div>
+                      </div>
+                  </div>
               </div>
-            </div>
-            <input type="text" id="inputNom" class="form-control" name="prenom" formControlName="prenom" [ngClass]="{ 'is-invalid': IsFiled && f.prenom.errors }" placeholder="Prenom" required>
-            <div *ngIf="IsFiled && f.prenom.errors" class="invalid-feedback">
-            <div *ngIf="f.prenom.errors" class="cross-validation-error-message alert alert-danger">
-              Entrer votre Prenom
-            </div>
-            <div *ngIf="f.prenom.hasError('maxlength')" class="cross-validation-error-message alert alert-danger">
-                Max 20
+              <div class="form-group row">
+                  <label class="col-lg-3 col-form-label form-control-label">Prenom</label>
+                  <div class="col-lg-9">
+                      <input class="form-control" type="text" [ngClass]="{ 'is-invalid': IsFiled && f.prenom.errors }" name="prenom" formControlName="prenom" placeholder="Prenom">
+                      <div *ngIf="IsFiled && f.prenom.errors" class="invalid-feedback">
+                      <div *ngIf="f.prenom.errors" class="cross-validation-error-message alert alert-danger">
+                        Entrer votre Prenom
+                      </div>
+                      <div *ngIf="f.prenom.hasError('maxlength')" class="cross-validation-error-message alert alert-danger">
+                          Max 20
+                        </div>
+                      </div>
+                  </div>
               </div>
-            </div>
-            <input type="email" id="inputEmail" class="form-control" name="email" formControlName="email" [ngClass]="{ 'is-invalid': IsFiled && f.email.errors }" placeholder="Email address" required>
-            <div *ngIf="IsFiled && f.email.errors" class="invalid-feedback">
-            <div *ngIf="f.email.errors" class="cross-validation-error-message alert alert-danger">
-              Entrer votre Email
-            </div>
-            <div *ngIf="f.email.hasError('maxlength')" class="cross-validation-error-message alert alert-danger">
-                Max 30
+              <div class="form-group row">
+                  <label class="col-lg-3 col-form-label form-control-label">Email</label>
+                  <div class="col-lg-9">
+                      <input class="form-control" type="email" [ngClass]="{ 'is-invalid': IsFiled && f.email.errors }" name="email" formControlName="email" placeholder="Email">
+                      <div *ngIf="IsFiled && f.email.errors" class="invalid-feedback">
+                      <div *ngIf="f.email.errors" class="cross-validation-error-message alert alert-danger">
+                        Entrer votre Email
+                      </div>
+                      <div *ngIf="f.email.hasError('maxlength')" class="cross-validation-error-message alert alert-danger">
+                          Max 30
+                        </div>
+                      </div>
+                  </div>
               </div>
+              <div class="form-group row">
+                  <label class="col-lg-3 col-form-label form-control-label">Mode Passe</label>
+                  <div class="col-lg-9">
+                      <input class="form-control" type="password" [ngClass]="{ 'is-invalid': IsFiled && f.password.errors }" name="password" formControlName="password" placeholder="Mode Passe">
+                      <div *ngIf="IsFiled && f.password.errors" class="invalid-feedback">
+                      <div *ngIf="f.password.errors" class="cross-validation-error-message alert alert-danger">
+                        Entrer votre Mode Passe
+                      </div>
+                      <div *ngIf="f.password.hasError('maxlength')" class="cross-validation-error-message alert alert-danger">
+                          Max 20
+                        </div>
+                      </div>
+                  </div>
               </div>
 
-            <input type="password" id="inputPassword" class="form-control" name="password" [ngClass]="{ 'is-invalid': IsFiled && f.password.errors }" formControlName="password" placeholder="Mode Passe" required>
-            <div *ngIf="IsFiled && f.password.errors" class="invalid-feedback">
-            <div *ngIf="f.password.errors" class="cross-validation-error-message alert alert-danger">
-              Entrer votre Mode Passe
+              <div class="form-group row">
+                <label class="col-lg-3 col-form-label form-control-label">Confirmer Mode Passe</label>
+                <div class="col-lg-9">
+                    <input type="password" id="inputPassword" formControlName="confirmPassword" class="form-control" [ngClass]="{ 'is-invalid': IsFiled && f.confirmPassword.errors }" placeholder="Confirmer Mode Passe" required>
+                    <div *ngIf="IsFiled && f.confirmPassword.errors" class="invalid-feedback">
+                      <div *ngIf="f.confirmPassword.errors.required" class="cross-validation-error-message alert alert-danger">Confirm votre mode passe s'il vous plaît</div>
+                      <div *ngIf="f.confirmPassword.errors.mustMatch" class="cross-validation-error-message alert alert-danger">Mode passe inccorecte</div>
+                    </div>
+                </div>
             </div>
-            <div *ngIf="f.password.hasError('maxlength')" class="cross-validation-error-message alert alert-danger">
-                Max 20
+
+
+              <div class="form-group row">
+                  <label class="col-lg-3 col-form-label form-control-label"></label>
+                  <div class="col-lg-9">
+                      <input type="reset" class="btn btn-secondary font-weight-bold" value="Vider">
+                      <input type="button" class="btn btn-danger font-weight-bold" value="Ajouter" (click)="onSubmit()">
+                  </div>
               </div>
-              </div>
-
-            <input type="password" id="inputPassword" formControlName="confirmPassword" class="form-control" [ngClass]="{ 'is-invalid': IsFiled && f.confirmPassword.errors }" placeholder="Confirmer Mode Passe" required>
-            <div *ngIf="IsFiled && f.confirmPassword.errors" class="invalid-feedback">
-              <div *ngIf="f.confirmPassword.errors.required" class="cross-validation-error-message alert alert-danger">Confirm votre mode passe s'il vous plaît</div>
-              <div *ngIf="f.confirmPassword.errors.mustMatch" class="cross-validation-error-message alert alert-danger">Mode passe inccorecte</div>
-          </div>
-
-            <button class="btn btn-danger" (click)="onSubmit()">Inscrire</button>
-        </form><!-- /form -->
-        <a routerLink="/login" class="forgot-password">
-            Connecter
-        </a>
-    </div><!-- /card-container -->
-</div><!-- /container -->
-<br>
-
-<script src="assets/js/JSLogin.js"></script>
+          </form>
+      </div>
+  </div>
+  <!-- /form user info -->

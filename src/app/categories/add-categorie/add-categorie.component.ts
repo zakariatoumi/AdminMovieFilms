@@ -25,8 +25,8 @@ export class AddCategorieComponent implements OnInit {
       libelle: ['', [Validators.required, Validators.maxLength(20)]],
     });
 
-     this.token =  window.localStorage.getItem('token');
-     console.log(this.token);
+     this.token =  window.sessionStorage.getItem('token');
+    //  console.log(this.token);
      if (!this.token) {
       this.router.navigate(['login']);
       }

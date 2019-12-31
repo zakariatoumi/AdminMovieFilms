@@ -19,149 +19,166 @@ export class HomeComponent implements OnInit {
   myLineChart = [];
   PieChart = [];
   users;
-  films: Film[];
-  categories: Categorie[];
-  commantaires: Commantaire[];
+  films;
+  categories;
+  commantaires;
+  pourcentage;
 
 
 
   constructor(private router: Router,
               private chartService: ChartService,
-               ) { }
+  ) { }
 
   ngOnInit() {
 
     this.chartService.getAllUsers()
-    .subscribe( (data: any ) => {
+      .subscribe((data: any) => {
 
         this.users = data;
         this.chartBar();
 
-    },
-    err => {
-      console.log(err);
-      }
-    );
+      },
+        err => {
+          console.log(err);
+        }
+      );
 
     this.chartService.getAllFilms()
-    .subscribe( (data: any ) => {
+      .subscribe((data: any) => {
 
         this.films = data;
         this.chartBar();
 
         // console.log(this.films);
 
-    },
-    err => {
-      console.log(err);
-      }
-    );
+      },
+        err => {
+          console.log(err);
+        }
+      );
 
     this.chartService.getAllCategories()
-    .subscribe( (data:any) => {
+      .subscribe((data: any) => {
 
         this.categories = data;
         this.chartBar();
 
         // console.log(this.categories);
 
-    },
-    err => {
-      console.log(err);
-      }
-    );
+      },
+        err => {
+          console.log(err);
+        }
+      );
 
     this.chartService.getAllCommantaire()
-    .subscribe( (data:any) => {
+      .subscribe((data: any) => {
 
         this.commantaires = data;
         this.chartBar();
 
         // console.log(this.commantaires);
 
-    },
-    err => {
-      console.log(err);
-      }
-    );
+      },
+        err => {
+          console.log(err);
+        }
+      );
 
-    this.token =  window.localStorage.getItem('token');
-    console.log(this.token);
+    this.chartService.PoucentTable()
+      .subscribe((data: any) => {
+
+        this.pourcentage = data;
+        this.ChartPie();
+
+        console.log('pourcentage');
+        console.log(this.pourcentage);
+
+      },
+        err => {
+          console.log(err);
+        }
+      );
+
+    this.token = window.sessionStorage.getItem('token');
+    // console.log(this.token);
     if (!this.token) {
-    this.router.navigate(['login']);
-  }
+      this.router.navigate(['login']);
+    }
 
     this.myLineChart = new Chart('mylineChart', {
-  type: 'line',
-  data: {
-    labels: ['Jan', 'Feb', 'March', 'April', 'May', 'June', 'July', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-    datasets: [{
-        label: 'Number of Items Sold in Months',
-        data: [0, 9 , 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        fill: false,
-        lineTension: 0.2,
-        borderColor: 'red',
-        borderWidth: 1
-    }]
-   },
-
-  options: {
-    title: {
-      text: 'Line Chart',
-      display: true
-  },
-    scales: {
-        yAxes: [{
-            stacked: true
+      type: 'line',
+      data: {
+        labels: ['Jan', 'Feb', 'March', 'April', 'May', 'June', 'July', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+        datasets: [{
+          label: 'Number of Items Sold in Months',
+          data: [0, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+          fill: false,
+          lineTension: 0.2,
+          borderColor: 'red',
+          borderWidth: 1
         }]
-    }
-}
-});
+      },
 
-// pie chart:
+      options: {
+        title: {
+          text: 'Line Chart',
+          display: true
+        },
+        scales: {
+          yAxes: [{
+            stacked: true
+          }]
+        }
+      }
+    });
+
+
+
+  }
+
+
+  // pie chart:
+  private ChartPie() {
     this.PieChart = new Chart('pieChart', {
-  type: 'pie',
-data: {
- labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
- datasets: [{
-     label: '# of Votes',
-     data: [9, 7 , 3, 5, 2, 10],
-     backgroundColor: [
-         'rgba(255, 99, 132, 0.2)',
-         'rgba(54, 162, 235, 0.2)',
-         'rgba(255, 206, 86, 0.2)',
-         'rgba(75, 192, 192, 0.2)',
-         'rgba(153, 102, 255, 0.2)',
-         'rgba(255, 159, 64, 0.2)'
-     ],
-     borderColor: [
-         'rgba(255,99,132,1)',
-         'rgba(54, 162, 235, 1)',
-         'rgba(255, 206, 86, 1)',
-         'rgba(75, 192, 192, 1)',
-         'rgba(153, 102, 255, 1)',
-         'rgba(255, 159, 64, 1)'
-     ],
-     borderWidth: 1
- }]
-},
-options: {
- title: {
-     text: 'Bar Chart',
-     display: true
- },
- scales: {
-     yAxes: [{
-         ticks: {
-             beginAtZero: true
-         }
-     }]
- }
-}
-});
-
-}
-
+      type: 'pie',
+      data: {
+        labels: ['User', 'Film', 'Categorie', 'Commantaire'],
+        datasets: [{
+          label: '# of Votes',
+          // tslint:disable-next-line: max-line-length
+          data: [Number(this.pourcentage.pourcentageUser), Number(this.pourcentage.pourcentageFilm), Number(this.pourcentage.pourcentagecategorie), Number(this.pourcentage.pourcentagecommantaire) ],
+          backgroundColor: [
+            'rgba(54, 162, 235, 0.2)',
+            'rgb(49, 143, 69, 0.2)',
+            'rgb(23, 162, 184, 0.2)',
+            'rgba(255, 206, 86, 0.2)'
+          ],
+          borderColor: [
+            'rgba(54, 162, 235, 1)',
+            'rgb(49, 143, 69, 1)',
+            'rgb(23, 162, 184, 1)',
+            'rgba(255, 206, 86, 1)'
+          ],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        title: {
+          text: 'Chart de toute les tables avec pourcentage',
+          display: true
+        },
+        scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero: true
+            }
+          }]
+        }
+      }
+    });
+  }
 
   private chartBar() {
     this.BarChart = new Chart('barChart', {
