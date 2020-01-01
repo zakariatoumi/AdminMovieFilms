@@ -8,6 +8,10 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class CommantaireService {
+  changeuserstatus(id, status) {
+
+    return this.http.get<Commantaire[]>(env.BASE_API_URL + 'MovieFilm/Commantaire/getByIdValide.php?id=' + id + '&status=' + status);
+  }
 
   constructor(private http: HttpClient) { }
 

@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, EmailValidator } from '@angular/forms';
 import { UserService } from '../../user.service';
 import { Router } from '@angular/router';
 import { MustMatch } from '../../_helpers/must-match.validator';
+import { ValiderEmail } from 'src/app/Model/user';
 
 
 @Component({
@@ -13,6 +14,7 @@ import { MustMatch } from '../../_helpers/must-match.validator';
 export class RegisterComponent implements OnInit {
   token: string;
   IsFiled = false;
+  Error: any;
 
 
 
@@ -66,7 +68,19 @@ export class RegisterComponent implements OnInit {
 
      // display form values on success
     // alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.addForm.value, null, 4));
+    this.userService.valideEmail()
+    .subscribe((data: ValiderEmail[]) => {
 
+      this.Error = data;
+
+      console.log('ERROR');
+      console.log(this.Error);
+
+    },
+      err => {
+        console.log(err);
+      }
+    );
 
   }
 

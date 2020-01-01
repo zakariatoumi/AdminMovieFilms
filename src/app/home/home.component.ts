@@ -144,7 +144,7 @@ export class HomeComponent implements OnInit {
     this.PieChart = new Chart('pieChart', {
       type: 'pie',
       data: {
-        labels: ['User', 'Film', 'Categorie', 'Commantaire'],
+        labels: ['Utilisateurs', 'Film', 'Categorie', 'Commantaire'],
         datasets: [{
           label: '# of Votes',
           // tslint:disable-next-line: max-line-length

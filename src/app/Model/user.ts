@@ -4,3 +4,7 @@ export class User {
   prenom: string;
   email: string;
 }
+
+export class ValiderEmail {
+  error: string;
+}

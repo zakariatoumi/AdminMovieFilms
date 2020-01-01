@@ -14,9 +14,9 @@ import { FormGroup } from '@angular/forms';
 export class ListFilmsComponent implements OnInit {
   titreFilm: string;
 
-  public directionLinks: boolean = true;
-  public autoHide: boolean = false;
-  public responsive: boolean = true;
+  public directionLinks = true;
+  public autoHide = false;
+  public responsive = true;
   public labels: any = {
       previousLabel: '<--',
       nextLabel: '-->',
@@ -24,8 +24,8 @@ export class ListFilmsComponent implements OnInit {
       screenReaderPageLabel: 'page',
       screenReaderCurrentLabel: `You're on page`
   };
-  p: number=1;
-  status = 0
+  p = 1;
+  status = 0;
 
 
   constructor(private filmService: FilmService,
@@ -80,11 +80,12 @@ export class ListFilmsComponent implements OnInit {
     });
   }
 
-  inputSelected(id,valid) {
+  inputSelected(id, valid) {
     // console.log('id');
     // console.log(valid);
-    this.status = (valid == 0) ? 1:0;
-    this.filmService.changeuserstatus(id,this.status).subscribe(res => {
+    // tslint:disable-next-line: triple-equals
+    this.status = (valid == 0) ? 1 : 0;
+    this.filmService.changeuserstatus(id, this.status).subscribe(res => {
       // refrach data
       this.getFilms();
     });

@@ -13,10 +13,12 @@ export class ListCategorieComponent implements OnInit {
   categories: Categorie[];
   token: string;
   libelle: string;
+  p = 1;
+  status = 0;
 
-  public directionLinks: boolean = true;
-  public autoHide: boolean = false;
-  public responsive: boolean = true;
+  public directionLinks = true;
+  public autoHide = false;
+  public responsive = true;
   public labels: any = {
       previousLabel: '<--',
       nextLabel: '-->',
@@ -24,12 +26,14 @@ export class ListCategorieComponent implements OnInit {
       screenReaderPageLabel: 'page',
       screenReaderCurrentLabel: `You're on page`
   };
-  p: number=1;
 
   constructor(private categorieService: CategorieService,
               private router: Router ) { }
 
   ngOnInit() {
+
+    this.getCategorie();
+
     this.categorieService.getCategorie()
     .subscribe( (data: Categorie[]) => {
 
@@ -85,6 +89,24 @@ export class ListCategorieComponent implements OnInit {
       this.ngOnInit();
     }
 
+  }
+
+  inputSelected(id, valid) {
+    // tslint:disable-next-line: triple-equals
+    this.status = (valid == 0) ? 1 : 0 ;
+    this.categorieService.changeuserstatus(id, this.status).subscribe(res => {
+      // refrach data
+      this.getCategorie();
+    });
+  }
+  private getCategorie() {
+    this.categorieService.getCategorie()
+      .subscribe((data: Categorie[]) => {
+        this.categories = [];
+        this.categories = data;
+      }, err => {
+        console.log(err);
+      });
   }
 
 

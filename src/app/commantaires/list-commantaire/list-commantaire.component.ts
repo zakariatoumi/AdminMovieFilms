@@ -14,11 +14,13 @@ export class ListCommantaireComponent implements OnInit {
   token: string;
   // tslint:disable-next-line: variable-name
   text_commantaire: string;
+  p = 1;
+  status = 0;
 
 
-  public directionLinks: boolean = true;
-  public autoHide: boolean = false;
-  public responsive: boolean = true;
+  public directionLinks = true;
+  public autoHide = false;
+  public responsive = true;
   public labels: any = {
       previousLabel: '<--',
       nextLabel: '-->',
@@ -26,12 +28,14 @@ export class ListCommantaireComponent implements OnInit {
       screenReaderPageLabel: 'page',
       screenReaderCurrentLabel: `You're on page`
   };
-  p: number=1;
 
   constructor(private commantaireService: CommantaireService,
               private router: Router) { }
 
   ngOnInit() {
+
+    this.getCommantaire();
+
     this.commantaireService.getCommantaire()
     .subscribe( (data: Commantaire[]) => {
 
@@ -88,6 +92,30 @@ export class ListCommantaireComponent implements OnInit {
       this.ngOnInit();
     }
 
+  }
+
+  inputSelected(id, valid) {
+
+    // tslint:disable-next-line: triple-equals
+    this.status = (valid == 0) ? 1 : 0 ;
+
+    this.commantaireService.changeuserstatus(id, this.status).subscribe(res => {
+      // refrach data
+      this.getCommantaire();
+    });
+
+  }
+  private getCommantaire() {
+    this.commantaireService.getCommantaire()
+    .subscribe( (data: Commantaire[]) => {
+        this.commantaires = [];
+        this.commantaires = data;
+
+    },
+    err => {
+      console.log(err);
+      }
+    );
   }
 
 }

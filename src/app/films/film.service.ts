@@ -41,10 +41,10 @@ export class FilmService {
     return this.http.post<Film[]>(env.BASE_API_URL + 'MovieFilm/Films/update.php', film);
   }
 
-  changeuserstatus(id,status) {
+  changeuserstatus(id, status) {
     // console.log(id);
     // console.log(status);
 
-    return this.http.get<Film[]>(env.BASE_API_URL + 'MovieFilm/Films/getByIdValide.php?id='+id+'&status='+status);
+    return this.http.get<Film[]>(env.BASE_API_URL + 'MovieFilm/Films/getByIdValide.php?id=' + id + '&status=' + status);
   }
 }

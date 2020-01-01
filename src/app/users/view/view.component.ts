@@ -16,12 +16,13 @@ export class ViewComponent implements OnInit {
   token: string;
   config: any;
   nom: string;
-  p: number=1;
+  p = 1;
+  status = 0;
 
   // public maxSize: number = 10;
-  public directionLinks: boolean = true;
-  public autoHide: boolean = false;
-  public responsive: boolean = true;
+  public directionLinks = true;
+  public autoHide = false;
+  public responsive = true;
   public labels: any = {
       previousLabel: '<--',
       nextLabel: '-->',
@@ -52,6 +53,16 @@ export class ViewComponent implements OnInit {
     if (!this.token) {
     this.router.navigate(['login']);
   }
+  }
+
+  private getFilms() {
+    this.userService.getUsers()
+      .subscribe((data: User[]) => {
+        this.users = [];
+        this.users = data;
+      }, err => {
+        console.log(err);
+      });
   }
 
   delete(users: User): void {
@@ -89,6 +100,15 @@ export class ViewComponent implements OnInit {
       this.ngOnInit();
     }
 
+  }
+
+  inputSelected(id, valid) {
+    // tslint:disable-next-line: triple-equals
+    this.status = (valid == 0) ? 1 : 0;
+    this.userService.changeuserstatus(id, this.status).subscribe(res => {
+      // refrach data
+      this.getFilms();
+    });
   }
 
 }

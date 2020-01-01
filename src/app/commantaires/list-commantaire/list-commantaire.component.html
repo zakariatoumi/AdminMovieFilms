@@ -20,6 +20,29 @@
                       <tr *ngFor="let commantaire of commantaires | paginate: {itemsPerPage: 3, currentPage: p}">
 
                         <td style="width: 80%;">{{commantaire.text_commantaire}} </td>
+                        <td>
+                          <ng-container *ngIf="commantaire.Valid == 1; else elseTemplate">
+                            <div class="ml-2">
+
+                              <label class="switch">
+                                <input type="checkbox" checked (click)="inputSelected(commantaire.id,commantaire.Valid)">
+                                <span class="slider round"></span>
+                              </label>
+
+                          </div>
+                          </ng-container>
+                          <ng-template #elseTemplate>
+                            <div class="ml-2">
+
+                              <label class="switch">
+                                <input type="checkbox" (click)="inputSelected(commantaire.id,commantaire.Valid)">
+                                <span class="slider round"></span>
+                              </label>
+
+                          </div>
+                          </ng-template>
+
+                        </td>
 
                         <td>
                             <button type="button" class="btn btn-outline-danger ml-2" style="width: 50px;" (click)="delete(commantaire)"><i class="fas fa-trash-alt"></i></button>

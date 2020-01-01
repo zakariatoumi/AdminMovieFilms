@@ -3,6 +3,8 @@
   <span class="anchor" id="formUserEdit"></span>
   <hr class="">
 
+
+
   <!-- form user info -->
   <div class="card bg-dark text-light card-outline-secondary">
       <div class="card-header" style="background-color: rgb(102, 102, 102);">
@@ -10,6 +12,9 @@
       </div>
       <div class="card-body">
           <form class="form" role="form" autocomplete="off" [formGroup]="addForm">
+            <div class="alert alert-danger" *ngIf="Error">
+              {{Error}}
+            </div>
               <div class="form-group row">
                   <label class="col-lg-3 col-form-label form-control-label">Nom</label>
                   <div class="col-lg-9">

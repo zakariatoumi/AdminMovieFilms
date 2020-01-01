@@ -8,6 +8,9 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class CategorieService {
+  changeuserstatus(id, status) {
+    return this.http.get<Categorie[]>(env.BASE_API_URL + 'MovieFilm/Categorie/getByIdValide.php?id=' + id + '&status=' + status);
+  }
 
   constructor(private http: HttpClient) { }
 
