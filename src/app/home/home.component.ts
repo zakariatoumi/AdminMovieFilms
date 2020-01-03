@@ -23,6 +23,8 @@ export class HomeComponent implements OnInit {
   categories;
   commantaires;
   pourcentage;
+  // tslint:disable-next-line: variable-name
+  chart_line: any;
 
 
 
@@ -92,8 +94,22 @@ export class HomeComponent implements OnInit {
         this.pourcentage = data;
         this.ChartPie();
 
-        console.log('pourcentage');
-        console.log(this.pourcentage);
+
+      },
+        err => {
+          console.log(err);
+        }
+      );
+
+    this.chartService.ChartLine()
+      .subscribe((data: any) => {
+
+        this.chart_line = data;
+        this.chartLine();
+
+        console.log('chart_line');
+        console.log(this.chart_line);
+
 
       },
         err => {
@@ -107,36 +123,12 @@ export class HomeComponent implements OnInit {
       this.router.navigate(['login']);
     }
 
-    this.myLineChart = new Chart('mylineChart', {
-      type: 'line',
-      data: {
-        labels: ['Jan', 'Feb', 'March', 'April', 'May', 'June', 'July', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-        datasets: [{
-          label: 'Number of Items Sold in Months',
-          data: [0, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-          fill: false,
-          lineTension: 0.2,
-          borderColor: 'red',
-          borderWidth: 1
-        }]
-      },
-
-      options: {
-        title: {
-          text: 'Line Chart',
-          display: true
-        },
-        scales: {
-          yAxes: [{
-            stacked: true
-          }]
-        }
-      }
-    });
-
 
 
   }
+
+
+
 
 
   // pie chart:
@@ -218,4 +210,37 @@ export class HomeComponent implements OnInit {
       }
     });
   }
+
+
+
+private chartLine() {
+  this.myLineChart = new Chart('mylineChart', {
+    type: 'line',
+    data: {
+      labels: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'],
+      datasets: [{
+        label: 'Le nombre d\'utilisateurs qui visitent ce site par mois',
+        // tslint:disable-next-line: max-line-length
+        data: [Number(this.chart_line.jan), Number(this.chart_line.feb), Number(this.chart_line.march), Number(this.chart_line.april), Number(this.chart_line.may), Number(this.chart_line.june), Number(this.chart_line.july), Number(this.chart_line.aug), Number(this.chart_line.sep), Number(this.chart_line.oct), Number(this.chart_line.nov), Number(this.chart_line.dec)],
+        fill: false,
+        lineTension: 0.2,
+        borderColor: 'red',
+        borderWidth: 1
+      }]
+    },
+    options: {
+      title: {
+        text: 'Chart ligne',
+        display: true
+      },
+      scales: {
+        yAxes: [{
+          stacked: true
+        }]
+      }
+    }
+  });
 }
+
+}
+

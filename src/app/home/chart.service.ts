@@ -28,4 +28,8 @@ export class ChartService {
   PoucentTable() {
     return this.http.get( env.BASE_API_URL + 'MovieFilm/Chart/PorsantageUser.php');
   }
+
+  ChartLine() {
+    return this.http.get( env.BASE_API_URL + 'MovieFilm/Chart/chartLine.php');
+  }
 }
