@@ -1,14 +1,16 @@
 <div class="row no-gutters bg-dark position-relative mt-5 mb-5">
-  <div class="col-md-6 mb-md-0 p-md-4">
-    <!-- <img src="../../../assets/img/Creed-critique-film.jpg" class="w-100" alt="..."> -->
-    <iframe class="w-100" height="100%" src="film.lien_film | safePipe"></iframe>
-      <!-- <iframe [src]="safeSrc" height="100%" class="w-100"></iframe> -->
+  <div class="col-md-6 mb-md-0 p-md-4 embed-responsive embed-responsive-16by9">
+
+                <iframe
+                  class="fullScreen w-100"
+                  height="100%"
+                  [src]="film.lien_film | safePipe"
+                  frameborder="0"
+                  scrolling="yes"
+                  allowfullscreen>
+                </iframe>
 
   </div>
-  <!-- <div class="col-md-6 position-static p-4 pl-md-0">
-
-  </div> -->
-
 
     <div class="col-sm position-static p-4 pl-md-0">
       <h5>Information Film</h5>
@@ -37,27 +39,6 @@
     <p>{{film.description}}</p>
 
     </div>
-
-    <!-- <div class="col-sm position-static p-4 pl-md-0">
-      <h5>Information Utilisateur</h5>
-      <div style="float: left;">
-        <p class="font-weight-bold" style="color: #dc3545;">Nom : </p>
-      </div>
-    <p>{{film.nom}}</p>
-
-    <span style="float: left;">
-      <p class="font-weight-bold" style="color: #dc3545;">Prenom : </p>
-    </span>
-
-      <p>{{film.prenom}}</p>
-
-      <span style="float: left;">
-        <p class="font-weight-bold" style="color: #dc3545;">Email : </p>
-      </span>
-
-        <p>{{film.email}}</p>
-    </div> -->
-
 
 
 </div>

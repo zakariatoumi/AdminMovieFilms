@@ -25,7 +25,6 @@ export class AddFilmComponent implements OnInit {
     .subscribe( (data: Categorie[]) => {
 
         this.categorie = data;
-        // console.log(this.categorie);
 
     },
     err => {

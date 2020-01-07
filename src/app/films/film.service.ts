@@ -13,7 +13,7 @@ export class FilmService {
   constructor(private http: HttpClient) { }
 
   getCategorie() {
-    return this.http.get<Categorie[]>(env.BASE_API_URL + 'MovieFilm/Categorie/list_categorie.php');
+    return this.http.get<Categorie[]>(env.BASE_API_URL + 'MovieFilm/Categorie/list_categorie_valider.php');
   }
 
   getFilms() {

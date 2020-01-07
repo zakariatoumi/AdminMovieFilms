@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FilmService } from '../../films/film.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Film } from '../../Model/film';
-import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 
 @Component({
@@ -14,13 +12,10 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 export class DetailsFilmsComponent implements OnInit {
   id: any;
   film: Film[];
-  safeSrc: SafeResourceUrl;
 
   constructor(private filmService: FilmService,
               private router: Router,
-              private route: ActivatedRoute,
-              private sanitizer: DomSanitizer,
-              ) {this.safeSrc =  this.sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/fAU5at2aRj4'); }
+              private route: ActivatedRoute) {}
 
   ngOnInit() {
     this.id = this.route.snapshot.params.id;
@@ -31,7 +26,6 @@ export class DetailsFilmsComponent implements OnInit {
       (data: Film[]) => {
 
         this.film = data;
-        // console.log(this.film);
 
     },
     err => {
