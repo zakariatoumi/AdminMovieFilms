@@ -3,8 +3,7 @@ export class User {
   nom: string;
   prenom: string;
   email: string;
+  error: any;
+  success: any;
 }
 
-export class ValiderEmail {
-  error: string;
-}

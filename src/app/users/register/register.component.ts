@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators, EmailValidator } from '@angular/for
 import { UserService } from '../../user.service';
 import { Router } from '@angular/router';
 import { MustMatch } from '../../_helpers/must-match.validator';
-import { ValiderEmail } from 'src/app/Model/user';
+import { User } from '../../Model/user';
 
 
 @Component({
@@ -15,6 +15,9 @@ export class RegisterComponent implements OnInit {
   token: string;
   IsFiled = false;
   Error: any;
+  status: boolean;
+  message: any;
+  Success: any;
 
 
 
@@ -53,10 +56,15 @@ export class RegisterComponent implements OnInit {
 
     this.IsFiled = true;
     if (this.addForm.valid) {
-    this.userService.createUsers(this.addForm.value)
-    .subscribe(
-      data => {
+    this.userService.createUsers(this.addForm.value).subscribe((data: any) => {
+      if (data.error) {
+        this.status = true;
+        this.message = data.error;
+      } else if (data.success) {
+        this.Success = data.success;
         this.router.navigate(['/accueil/view']);
+    }
+
       }
     );
     }
@@ -65,23 +73,6 @@ export class RegisterComponent implements OnInit {
     if (this.addForm.invalid) {
       return;
   }
-
-     // display form values on success
-    // alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.addForm.value, null, 4));
-    this.userService.valideEmail()
-    .subscribe((data: ValiderEmail[]) => {
-
-      this.Error = data;
-
-      console.log('ERROR');
-      console.log(this.Error);
-
-    },
-      err => {
-        console.log(err);
-      }
-    );
-
   }
 
   onReset() {

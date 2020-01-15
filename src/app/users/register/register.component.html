@@ -3,7 +3,13 @@
   <span class="anchor" id="formUserEdit"></span>
   <hr class="">
 
+  <div *ngIf="status" class="alert alert-danger">
+    {{message}}
+  </div>
 
+  <div *ngIf="Success" class="alert alert-success">
+    {{Success}}
+  </div>
 
   <!-- form user info -->
   <div class="card bg-dark text-light card-outline-secondary">
