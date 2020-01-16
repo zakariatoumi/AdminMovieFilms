@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { User, ValiderEmail } from './Model/user';
+import { User } from './Model/user';
 import { environment as env } from 'src/environments/environment';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
@@ -28,10 +28,6 @@ export class UserService {
 
   createUsers(user: User) {
     return this.http.post<User[]>(env.BASE_API_URL + env.APIs.createUser, user);
-  }
-
-  valideEmail() {
-    return this.http.get<ValiderEmail[]>(env.BASE_API_URL + env.APIs.createUser);
   }
 
   updateUsers(user: User) {
