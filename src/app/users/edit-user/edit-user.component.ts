@@ -62,7 +62,9 @@ export class EditUserComponent implements OnInit {
         nom : this.addForm.controls.nom.value,
         prenom : this.addForm.controls.prenom.value,
         email : this.addForm.controls.email.value,
-        password : this.addForm.controls.password.value
+        password : this.addForm.controls.password.value,
+        // error : this.addForm.controls.error.value,
+        // success : this.addForm.controls.success.value,
       };
       this.userService.updateUsers(body).subscribe(
           res => {
